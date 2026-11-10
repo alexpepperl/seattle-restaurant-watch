@@ -1,0 +1,79 @@
+{
+  "reviewedAt": "2026-11-10",
+  "scope": "A curated starting collection of public reporting from Ballard and Alki. Not a complete Seattle incident database.",
+  "sources": {
+    "ballard-feb": {
+      "publisher": "My Ballard",
+      "title": "Ballard restaurants report break-ins and frustration over response",
+      "url": "https://www.myballard.com/2026/02/20/ballard-restaurants-report-break-ins-vandalism-and-frustration-over-response/",
+      "published": "2026-02-20"
+    },
+    "saleh": {
+      "publisher": "My Ballard",
+      "title": "Saleh's Delicatessen broken into twice in two months",
+      "url": "https://www.myballard.com/2026/11/09/salehs-delicatessen-broken-into-twice-in-two-months/",
+      "published": "2026-11-09"
+    },
+    "ballard-may": {
+      "publisher": "My Ballard / UW Newslab",
+      "title": "Ballard businesses face ongoing break-ins as city leaders respond",
+      "url": "https://www.myballard.com/2026/05/06/ballard-businesses-face-ongoing-break-ins-as-city-leaders-respond/",
+      "published": "2026-05-06"
+    },
+    "ballard-apr": {
+      "publisher": "My Ballard",
+      "title": "Five Guys, Ballard Coffee Co. burglarized overnight",
+      "url": "https://www.myballard.com/2026/04/28/five-guys-ballard-coffee-co-burglarized-overnight/",
+      "published": "2026-04-28"
+    },
+    "alki": {
+      "publisher": "FOX 13 Seattle",
+      "title": "West Seattle businesses frustrated after repeated break-ins",
+      "url": "https://www.fox13seattle.com/news/west-seattle-businesses-break-ins",
+      "published": "2026-02-25"
+    },
+    "copine-closure": {
+      "publisher": "KIRO 7",
+      "title": "Seattle loses two restaurants in Belltown, Ballard",
+      "url": "https://www.kiro7.com/news/local/seattle-loses-two-restaurants-belltown-ballard/NDWNCVSKXJESZCFEQELPB5F6PI/",
+      "published": "2026-05-29"
+    },
+    "fire": {
+      "publisher": "FOX 13 Seattle",
+      "title": "West Seattle taco restaurant hit by break-in",
+      "url": "https://www.fox13seattle.com/news/west-seattle-taco-restaurant-break-in",
+      "published": "2026-02-19"
+    }
+  },
+  "locations": [
+    { "id": "salehs", "name": "Saleh's Delicatessen", "category": "Deli & beer garden", "neighborhood": "Ballard", "address": "2401 NW 80th St", "lat": 47.686579, "lng": -122.388005, "website": "https://salehscorner.wordpress.com/" },
+    { "id": "biscuit-bean", "name": "Biscuit and Bean", "category": "Cafe", "neighborhood": "Ballard", "address": "5404 Leary Ave NW", "lat": 47.667272, "lng": -122.382519, "website": "https://www.thebiscuitandbean.com/" },
+    { "id": "cloudy", "name": "Cloudy Cafe", "category": "Cafe & bakery", "neighborhood": "Ballard", "address": "6420 24th Ave NW", "lat": 47.675618, "lng": -122.387274, "website": "https://www.cloudycafeseattle.com/" },
+    { "id": "copine", "name": "Copine", "category": "Restaurant · closure reported May 2026", "neighborhood": "Ballard", "address": "6460 24th Ave NW", "lat": 47.675779, "lng": -122.387275, "website": "https://www.copineseattle.com/", "status": "closure-reported", "statusSourceId": "copine-closure" },
+    { "id": "seattle-biscuit", "name": "Seattle Biscuit Co.", "category": "Breakfast & brunch", "neighborhood": "Ballard", "address": "4001 Leary Way NW", "lat": 47.656207, "lng": -122.362399, "website": "https://seattlebiscuitcompany.com/" },
+    { "id": "salt-sugar", "name": "Salt & Sugar", "category": "Cafe & bakery", "neighborhood": "Ballard", "address": "5615 24th Ave NW", "lat": 47.669965, "lng": -122.387940, "website": "https://www.saltandsugarcafe.com/" },
+    { "id": "outsider", "name": "Outsider BBQ", "category": "Barbecue & beer garden", "neighborhood": "Ballard", "address": "4010 Leary Way NW", "lat": 47.656407, "lng": -122.361835, "website": "https://www.outsiderbbq.com/" },
+    { "id": "mean", "name": "Mean Sandwich", "category": "Sandwich shop", "neighborhood": "Ballard", "address": "1510 NW Leary Way", "lat": 47.663877, "lng": -122.376884, "website": "https://www.meansandwich.com/" },
+    { "id": "five-guys", "name": "Five Guys · Ballard", "category": "Restaurant", "neighborhood": "Ballard", "address": "NW Market St & 15th Ave NW", "lat": 47.668919, "lng": -122.376753, "website": "https://www.fiveguys.com/" },
+    { "id": "ballard-coffee", "name": "Ballard Coffee Co.", "category": "Coffee shop", "neighborhood": "Ballard", "address": "5905 15th Ave NW", "lat": 47.671838, "lng": -122.376463, "website": "https://www.google.com/maps/search/?api=1&query=Ballard+Coffee+Company+5905+15th+Ave+NW+Seattle" },
+    { "id": "alki", "name": "Alki Coffee Co. / Ben & Jerry's", "category": "Adjoining coffee & ice cream shops", "neighborhood": "Alki", "address": "2742 Alki Ave SW", "lat": 47.578750, "lng": -122.411211, "website": "https://alkicoffeeco.com/contact-us" },
+    { "id": "fire", "name": "Fire Tacos & Cantina", "category": "Mexican restaurant", "neighborhood": "Alki", "address": "2738 Alki Ave SW", "lat": 47.57880, "lng": -122.41110, "website": "https://firetacosbirria.com/" }
+  ],
+  "incidents": [
+    { "id": "salehs-nov26", "locationId": "salehs", "type": "attempt", "start": "2026-11-07", "end": "2026-11-07", "dateLabel": "Nov 7, 2026", "precision": "day", "sourceId": "saleh", "summary": "An attempted entry was reported at about 4:30 a.m. Owners shared surveillance footage and asked neighbors for help.", "details": "Owners believe the same people and van appeared in the September incident. That connection and any links to other businesses have not been independently confirmed.", "cost": null },
+    { "id": "salehs-sep26", "locationId": "salehs", "type": "burglary", "start": "2026-09-09", "end": "2026-09-09", "dateLabel": "Sep 9, 2026", "precision": "day", "sourceId": "saleh", "summary": "Owners reported a break-in at approximately 2:30 a.m., later sharing footage alongside a November attempted entry.", "details": "The November report is the source for both incidents. No dollar estimate was reported.", "cost": null },
+    { "id": "biscuit-bean-feb26", "locationId": "biscuit-bean", "type": "burglary", "start": "2026-02-05", "end": "2026-02-05", "dateLabel": "Feb 5, 2026", "precision": "day", "sourceId": "ballard-feb", "summary": "Money, an employee's laptop and a speaker were taken without broken glass or apparent forced entry.", "details": "Owner Ben Libay estimated $800-$1,000 in losses, below the insurance deductible, and said he did not file a police report.", "cost": { "min": 800, "max": 1000, "qualifier": "range", "label": "$800–$1,000", "kind": "Reported theft losses" } },
+    { "id": "cloudy-feb26", "locationId": "cloudy", "type": "attempt", "start": "2026-02-09", "end": "2026-02-09", "dateLabel": "Feb 9, 2026", "precision": "day", "sourceId": "ballard-feb", "summary": "Two people damaged a lockbox and gate, took a key and fob, and attempted entry through a sidewalk door.", "details": "The owner said they did not enter the cafe. A baker was already on-site. The report describes surveillance footage but gives no repair estimate.", "cost": null },
+    { "id": "copine-early26", "locationId": "copine", "type": "vandalism", "start": "2026-01-01", "end": "2026-02-20", "dateLabel": "Early 2026 · date not reported", "precision": "range", "sourceId": "ballard-feb", "summary": "A front window was smashed with a rock. Staff described the incident in surveillance footage.", "details": "Copine had installed security film after a previous break-in. That earlier, undated event is context only and is not separately counted. This window damage is classified as vandalism, not burglary.", "cost": null },
+    { "id": "seattle-biscuit-early26", "locationId": "seattle-biscuit", "type": "theft", "start": "2026-01-01", "end": "2026-02-20", "dateLabel": "Early 2026 · date not reported", "precision": "range", "sourceId": "ballard-feb", "summary": "An outdoor refrigeration unit was destroyed and stripped of copper, with losses reported above $25,000.", "details": "Owner Sam Thompson reported no insurance coverage for the damage and two attempted entries the following night. Those undated attempts are noted here but not separately counted. The article links an owner fundraiser.", "cost": { "min": 25000, "max": null, "qualifier": "more-than", "label": "More than $25,000", "kind": "Reported equipment damage / losses" } },
+    { "id": "salt-jan26", "locationId": "salt-sugar", "type": "burglary", "start": "2026-01-28", "end": "2026-01-28", "dateLabel": "Jan 28, 2026", "precision": "day", "sourceId": "ballard-feb", "summary": "A person entered the lobby around 1:45 a.m. and took coins, keys, an iPad and third-party tablets.", "details": "No windows were broken. The owner said a lock had been loosened during an earlier attempted entry. That earlier event is not separately counted because its date was not reported.", "cost": null },
+    { "id": "outsider-dec25", "locationId": "outsider", "type": "vandalism", "start": "2025-12-01", "end": "2025-12-24", "dateLabel": "Dec 2025 · before Christmas", "precision": "range", "sourceId": "ballard-may", "summary": "Glass in the front door was shattered and cargo vans were damaged, costing an estimated $5,000.", "details": "The owner described the incident retrospectively in May 2026. A further roughly $1,000 in alarms and unspecified fence and staffing costs are not included in the incident loss total.", "cost": { "min": 5000, "max": 5000, "qualifier": "estimate", "label": "About $5,000", "kind": "Estimated property damage" } },
+    { "id": "mean-apr26", "locationId": "mean", "type": "burglary", "start": "2026-04-27", "end": "2026-04-27", "dateLabel": "Apr 27, 2026", "precision": "day", "sourceId": "ballard-may", "summary": "A window was smashed and a door was attacked with a crowbar. Management estimated about $600 in damage.", "details": "The source calls this a break-in. Management said the storefront is cashless and wanted to preserve a welcoming atmosphere.", "cost": { "min": 600, "max": 600, "qualifier": "estimate", "label": "About $600", "kind": "Estimated property damage" } },
+    { "id": "five-guys-apr26", "locationId": "five-guys", "type": "burglary", "start": "2026-04-28", "end": "2026-04-28", "dateLabel": "Apr 28, 2026", "precision": "day", "sourceId": "ballard-apr", "summary": "Police said burglars kicked in the door shortly after 1 a.m. Nothing was reported stolen.", "details": "The manager estimated up to $5,000 in damage. An upper-only estimate is displayed but not added to the documented cost floor. Police had not confirmed a link to the nearby coffee shop incident.", "cost": { "min": 0, "max": 5000, "qualifier": "up-to", "label": "Up to $5,000", "kind": "Upper estimate of property damage" } },
+    { "id": "ballard-coffee-apr26", "locationId": "ballard-coffee", "type": "burglary", "start": "2026-04-28", "end": "2026-04-28", "dateLabel": "Apr 28, 2026", "precision": "day", "sourceId": "ballard-apr", "summary": "A bag of tools valued at about $200 was stolen roughly half an hour after the Five Guys burglary.", "details": "Police had not confirmed that the same suspects were involved in the two incidents.", "cost": { "min": 200, "max": 200, "qualifier": "estimate", "label": "About $200", "kind": "Estimated value of stolen tools" } },
+    { "id": "alki-jul25", "locationId": "alki", "type": "burglary", "start": "2025-07-01", "end": "2025-07-31", "dateLabel": "Jul 2025 · day not reported", "precision": "month", "sourceId": "alki", "summary": "Surveillance showed a bolt being cut before entry. The co-owner reported a stolen register, cash and a safe.", "details": "The adjoining coffee and ice cream businesses are treated as one shared location. FOX 13 described three separate months of incidents, not three incidents at each business.", "cost": null },
+    { "id": "alki-oct25", "locationId": "alki", "type": "burglary", "start": "2025-10-01", "end": "2025-10-31", "dateLabel": "Oct 2025 · day not reported", "precision": "month", "sourceId": "alki", "summary": "Burglars forced the glass doors of the Ben & Jerry's shop and took a safe.", "details": "The co-owner said the adjoining shops subsequently went cashless. No dollar estimate for this incident was provided.", "cost": null },
+    { "id": "alki-dec25", "locationId": "alki", "type": "burglary", "start": "2025-12-01", "end": "2025-12-31", "dateLabel": "Dec 2025 · day not reported", "precision": "month", "sourceId": "alki", "summary": "A further entry after the businesses went cashless resulted in a stolen iPad and about $1,000 in damage.", "details": "The source attributes the $1,000 to damage, not the value of the iPad. No stolen cash was reported in this incident.", "cost": { "min": 1000, "max": 1000, "qualifier": "estimate", "label": "About $1,000", "kind": "Estimated property damage" } },
+    { "id": "fire-feb26", "locationId": "fire", "type": "burglary", "start": "2026-02-18", "end": "2026-02-18", "dateLabel": "Feb 18, 2026 · inferred from report", "precision": "inferred", "sourceId": "fire", "summary": "Burglars forced an emergency exit, damaged cameras and took iPads and irreplaceable gifts from customers.", "details": "The February 19 report says the incident occurred on Wednesday, giving an inferred date of February 18. The owners said they filed a police report and remained open at the time of reporting. No loss estimate was published.", "cost": null }
+  ]
+}

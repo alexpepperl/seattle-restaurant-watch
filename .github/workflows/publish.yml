@@ -1,0 +1,57 @@
+name: Refresh sources and publish
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Check public RSS feeds
+        id: refresh
+        continue-on-error: true
+        run: npm run refresh
+      - run: npm test
+      - name: Save monitor results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/monitor.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update public source monitor" -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
+            git push
+          fi
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Flag incomplete source refresh after publishing feed health
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "::error::One or more RSS feeds failed. Published site includes the failure status; reviewed incidents remain intact."
+          exit 1

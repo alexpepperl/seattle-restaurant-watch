@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193e36">
+  <meta name="description" content="See the human cost of Seattle restaurant break-ins. Explore sourced reports, repeat locations and reported losses, and find ways to support local restaurants.">
+  <title>Seattle Restaurant Watch — Keep our tables open.</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#explore">Skip to incident explorer</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Seattle Restaurant Watch home"><span class="brand-mark" aria-hidden="true">⌂</span><span>SEATTLE<span class="brand-second">RESTAURANT WATCH</span></span></a>
+    <nav aria-label="Main navigation"><a class="nav-active" href="#explore">Incident map</a><a href="#trends">The bigger picture</a><a href="#why">Why this matters</a></nav>
+    <a class="button button-dark header-support" href="#support">Support a restaurant <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy"><div class="eyebrow"><span class="tiny-line"></span> OUR RESTAURANTS. OUR NEIGHBORHOODS.</div>
+      <h1>Keep our<br>tables <span class="open-word">open.<svg viewBox="0 0 270 18" aria-hidden="true"><path d="M4 13 Q126 -2 264 9"/></svg></span></h1>
+      <p>Behind every broken window is a small business.<br class="desktop-break"> See the impact of restaurant break-ins across Seattle—and the places that could use a little love.</p>
+      <div class="hero-actions"><a class="button button-orange" href="#explore">Explore the incident map <span aria-hidden="true">↓</span></a><a class="text-link" href="#why">The story behind the map <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a welcoming neighborhood restaurant">
+        <div class="art-caption"><span class="status-dot"></span> SMALL BUSINESSES. BIG PART OF SEATTLE.</div>
+        <svg class="storefront" viewBox="0 0 520 320" role="img" aria-label="A neighborhood restaurant with orange striped awning and outdoor tables">
+          <defs><pattern id="brick" width="48" height="24" patternUnits="userSpaceOnUse"><path d="M0 24H48M24 0V12M0 12H48M0 12V24M48 12V24" fill="none" stroke="#ded9cc" stroke-width="1"/></pattern></defs>
+          <path d="M28 289H496" stroke="#193e36" stroke-width="2"/><path d="M54 289V44H445V289" fill="#efe9dd" stroke="#193e36" stroke-width="2"/><path d="M54 49H445V286H54Z" fill="url(#brick)"/>
+          <path d="M47 48V33H453V48Z" fill="#193e36"/><rect x="77" y="64" width="345" height="48" rx="2" fill="#fbf8ef" stroke="#193e36" stroke-width="2"/>
+          <text x="249" y="95" text-anchor="middle" fill="#193e36" font-family="Georgia,serif" font-size="24" letter-spacing="5">THE NEIGHBORHOOD</text>
+          <path d="M72 120H427L444 155H55Z" fill="#e86b43" stroke="#193e36" stroke-width="2"/><path d="M95 120H121L110 155H82ZM149 120H175L170 155H139ZM203 120H229V155H198ZM257 120H283L288 155H257ZM311 120H337L347 155H316ZM365 120H391L407 155H376Z" fill="#fff3d9"/>
+          <path d="M55 155V166Q67 181 80 166Q93 181 106 166Q119 181 132 166Q145 181 158 166Q171 181 184 166Q197 181 210 166Q223 181 236 166Q249 181 262 166Q275 181 288 166Q301 181 314 166Q327 181 340 166Q353 181 366 166Q379 181 392 166Q405 181 418 166Q431 181 444 166V155Z" fill="#e86b43" stroke="#193e36" stroke-width="2"/>
+          <rect x="78" y="185" width="103" height="77" fill="#aac0b2" stroke="#193e36" stroke-width="3"/><path d="M130 185V262M78 224H181" stroke="#193e36" stroke-width="2"/><path d="M85 193L117 215M140 232L171 253" stroke="#f6f0df" stroke-width="5" opacity=".7"/>
+          <rect x="201" y="185" width="80" height="104" fill="#193e36"/><rect x="209" y="193" width="64" height="67" fill="#b9cbb9"/><rect x="217" y="215" width="49" height="25" rx="2" fill="#fff4dd" transform="rotate(-8 241 227)"/><text x="240" y="233" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#193e36" font-weight="bold" transform="rotate(-8 241 227)">OPEN</text><circle cx="268" cy="271" r="3" fill="#f3bf6b"/>
+          <rect x="302" y="185" width="103" height="77" fill="#aac0b2" stroke="#193e36" stroke-width="3"/><path d="M354 185V262M302 224H405" stroke="#193e36" stroke-width="2"/><path d="M311 193L341 215M365 233L395 254" stroke="#f6f0df" stroke-width="5" opacity=".7"/>
+          <path d="M19 285V237M6 247L19 261L31 242M4 265L19 275L35 258" stroke="#557959" stroke-width="5" fill="none"/><path d="M5 278H35L31 289H10Z" fill="#d9815b" stroke="#193e36"/>
+          <path d="M452 289V239M437 250Q421 224 441 230Q450 233 452 253M454 251Q475 218 480 235Q481 249 454 263M450 272Q426 251 430 266Q431 278 450 280" stroke="#557959" stroke-width="5" fill="none"/><path d="M437 274H470L465 289H442Z" fill="#d9815b" stroke="#193e36"/>
+          <path d="M91 282H164M108 282L104 305M150 282L154 305M125 276V305M326 282H399M340 282L336 305M385 282L389 305M362 276V305" stroke="#193e36" stroke-width="3"/><ellipse cx="128" cy="276" rx="39" ry="5" fill="#e7ae68" stroke="#193e36"/><ellipse cx="362" cy="276" rx="39" ry="5" fill="#e7ae68" stroke="#193e36"/>
+          <path d="M462 75L479 63M470 94L490 90M451 58L458 40" stroke="#e86b43" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="art-note"><span class="drawn-heart">♡</span> A city is only as strong as its neighborhood spots.</div>
+      </div>
+    </section>
+    <section class="stats wrap" aria-label="Summary for selected filters">
+      <article><span class="stat-icon">↗</span><span class="stat-label">Sourced incidents</span><strong id="stat-incidents">—</strong><small>Within your selected timeframe</small></article>
+      <article><span class="stat-icon">⌂</span><span class="stat-label">Places affected</span><strong id="stat-locations">—</strong><small>Unique restaurant locations</small></article>
+      <article><span class="stat-icon">↻</span><span class="stat-label">Repeat-hit locations</span><strong id="stat-repeats">—</strong><small>2+ mapped incidents in this view</small></article>
+      <article><span class="stat-icon">$</span><span class="stat-label">Reported cost floor</span><strong id="stat-cost">—</strong><small id="cost-caption">Available lower estimates, not audited</small></article>
+    </section>
+    <div class="wrap coverage-note"><span aria-hidden="true">ⓘ</span> A starting collection, not a citywide count. Coverage currently focuses on Ballard and Alki. Unknown costs are not zero. <a href="#methodology">How we count →</a></div>
+    <section id="explore" class="explorer wrap section-space">
+      <div class="section-heading"><div><div class="eyebrow">THE INCIDENT EXPLORER</div><h2>See what’s happening.</h2><p>Explore the reports. Understand the impact. Know the places behind the pins.</p></div><div class="freshness"><span class="status-dot"></span><span id="review-date">Loading source review…</span></div></div>
+      <div id="load-error" class="error-banner" role="alert" hidden></div>
+      <form class="filters" id="filters" aria-label="Filter incidents">
+        <label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search a restaurant or address…" aria-label="Search a restaurant or address"></label>
+        <label><span class="sr-only">Timeframe</span><select id="period"><option value="all">All reported dates</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option><option value="365">Last 365 days</option><option value="2026">2026</option><option value="custom">Custom dates</option></select></label>
+        <label><span class="sr-only">Neighborhood</span><select id="neighborhood"><option value="">All neighborhoods</option></select></label>
+        <label><span class="sr-only">Incident type</span><select id="type"><option value="">All incident types</option><option value="burglary">Break-ins</option><option value="attempt">Attempted entries</option><option value="theft">Theft / damage</option><option value="vandalism">Vandalism</option></select></label>
+        <button class="reset-button" type="reset">Reset</button>
+        <div id="custom-dates" class="custom-dates" hidden><label>From <input type="date" id="start-date" min="2000-01-01" max="2100-12-31"></label><label>To <input type="date" id="end-date" min="2000-01-01" max="2100-12-31"></label><span id="date-error" role="alert"></span></div>
+      </form>
+      <div class="explorer-grid">
+        <div class="map-column"><div class="map-toolbar"><span><span class="status-dot"></span> <b id="map-count">Loading map</b></span><div class="segmented" aria-label="Map display"><button id="pins-mode" type="button" class="active" aria-pressed="true">Locations</button><button id="density-mode" type="button" aria-pressed="false">Concentration</button></div></div>
+          <div class="map-shell"><div id="map" aria-label="Interactive map of reported incidents" tabindex="0"></div><button id="fit-map" class="fit-map" type="button" title="Fit map to filtered locations" aria-label="Fit map to filtered locations">⌖</button><div id="map-error" class="map-error" role="alert" hidden></div></div>
+          <div class="map-legend"><span><i class="legend-pin"></i> One mapped incident</span><span><i class="legend-pin repeat"></i> Repeat location</span><span>Approximate business locations · not a risk map</span></div>
+        </div>
+        <aside class="report-panel" aria-label="Filtered incident reports"><div class="report-heading"><h3>Behind the pins</h3><span id="report-count"></span></div><div id="incident-list" class="incident-list" aria-live="polite"><p class="empty-state">Loading sourced reports…</p></div></aside>
+      </div>
+      <div class="explorer-foot"><span>Dates reflect incidents, not article publication. Uncertain dates match any overlapping range.</span><button type="button" id="download" class="text-link">Download this view (CSV) ↓</button></div>
+    </section>
+    <section id="trends" class="wrap section-space">
+      <div class="section-heading"><div><div class="eyebrow">THE BIGGER PICTURE</div><h2>Not just a broken window.</h2><p>Every repair bill is money that can’t go back into the business.</p></div><span class="section-tag">Updates with your filters</span></div>
+      <div class="insight-grid">
+        <article class="chart-card"><div class="card-heading"><h3>Reports over time</h3><span>By incident month</span></div><div id="chart" class="bar-chart" aria-label="Monthly incident counts"></div><p id="chart-note" class="fine-print"></p><p class="fine-print">A trend in this collection is not a trend in Seattle crime. News coverage, missing reports and approximate dates affect counts.</p></article>
+        <article class="repeat-card"><div class="card-heading"><h3>When it happens again.</h3><span class="repeat-label">REPEAT LOCATIONS</span></div><div id="repeat-list"></div><p class="fine-print">Counts refer only to separately documented incidents in your current filters—not every incident a business has experienced.</p></article>
+      </div>
+    </section>
+    <section id="why" class="story-section section-space">
+      <div class="wrap story-grid"><div><div class="eyebrow">WHY THIS EXISTS</div><h2>A repair grant isn’t<br>a public safety strategy.</h2><p class="story-lead">Restaurant owners should be serving their neighbors.<br>Not budgeting for the next break-in.</p><p>This project was inspired by <a href="https://www.seattletimes.com/life/food-drink/seattle-restaurant-owners-sick-of-break-ins-get-together-to-make-noise/" target="_blank" rel="noopener noreferrer">The Seattle Times’ story about restaurant owners coming together to make noise ↗</a>. The article’s full text was not available for verification; the incidents here are independently sourced from the linked local reporting.</p><p>In Ballard, owners have described stolen equipment, damaged doors and costs that fall below insurance deductibles—or aren’t insured at all. In Alki, a co-owner described three break-ins at adjoining shops and warned that repeat losses aren’t sustainable.</p><p>In May 2026, <a href="https://www.kiro7.com/news/local/seattle-loses-two-restaurants-belltown-ballard/NDWNCVSKXJESZCFEQELPB5F6PI/" target="_blank" rel="noopener noreferrer">KIRO 7 reported Copine’s planned closure ↗</a>, citing rising costs, slower business and multiple break-ins. Crime was one reported pressure—not an established sole cause. We mark that closure rather than recommend a visit.</p><a class="story-source" href="https://www.myballard.com/2026/02/20/ballard-restaurants-report-break-ins-vandalism-and-frustration-over-response/" target="_blank" rel="noopener noreferrer">Read the Ballard reporting ↗</a></div>
+        <article class="grant-card"><div class="eyebrow">THE RECOVERY GAP</div><h3>Help with repairs.<br>Not a full recovery.</h3><div class="grant-amount">$5,000<span>current standard repair grant cap</span></div><div class="grant-meter"><span></span></div><p>Seattle’s Storefront Repair Fund reimburses eligible storefront repairs. It does <strong>not</strong> cover stolen goods, and businesses must pay first. Funding and eligibility apply; limited exceptions may exist.</p><div class="grant-facts"><span>Paid up front by the business</span><span>Stolen goods excluded</span><span>Funded by the Payroll Expense Tax</span></div><p class="fine-print">Official policy checked Nov 10, 2026. Older articles cite a $3,000 cap. This is not a calculation of any restaurant’s grant award or uncovered losses.</p><a href="https://www.seattle.gov/economic-development/grants-and-funding/back-to-business/storefront-repair-fund" target="_blank" rel="noopener noreferrer">Read the city’s current rules ↗</a></article>
+      </div>
+      <div class="wrap advocacy"><span class="advocacy-icon" aria-hidden="true">↗</span><div><h3>Recovery matters. So does preventing the next break-in.</h3><p>Our position: pair assistance with effective, lawful enforcement, investigation and prevention. Ask the city to measure repeat victimization, case outcomes and grant effectiveness. These reports alone do not establish that grants waste tax dollars or that any single policy causes crime.</p></div><a class="button button-outline" href="https://www.seattle.gov/council/meet-the-council" target="_blank" rel="noopener noreferrer">Contact your councilmember ↗</a></div>
+    </section>
+    <section id="support" class="wrap section-space">
+      <div class="section-heading"><div><div class="eyebrow">TURN AWARENESS INTO A TABLE FOR TWO</div><h2>Show up for your local.</h2><p>Grab a coffee. Order dinner. Bring a friend. Small visits make a difference.</p></div><span class="support-heart" aria-hidden="true">♡</span></div>
+      <p class="fine-print support-note">Places in your current map filters. Visit links are not endorsements or confirmation of current hours; check the business before traveling.</p><div id="support-list" class="support-grid"></div>
+    </section>
+    <section id="sources" class="wrap section-space source-section">
+      <div class="section-heading"><div><div class="eyebrow">PUBLIC SOURCES. CLEAR LIMITS.</div><h2>Trust starts with the receipts.</h2><p>Every mapped incident has a source. New headlines are leads, not verified incidents.</p></div><button id="refresh" type="button" class="button button-outline">Check for updates ↻</button></div>
+      <div class="source-grid"><article class="monitor-card"><div class="card-heading"><h3>On our radar</h3><span class="section-tag">NOT YET REVIEWED</span></div><p id="monitor-status" role="status">Loading source monitor…</p><div id="leads"></div><details><summary>Feed health & update details</summary><div id="feed-health"></div><p class="fine-print">GitHub checks public RSS feeds every six hours (best effort, not guaranteed). This page checks the published files every five minutes. Headlines can be irrelevant or duplicated; a human must verify, date, deduplicate and locate a report before it appears on the map. Social posts are reviewed only through linked reporting; no private content is collected.</p></details></article>
+        <article id="methodology" class="methodology-card"><h3>Know what you’re looking at.</h3><details open><summary>A small collection, not a crime census</summary><p>News coverage is uneven. The starting dataset covers Ballard and Alki, not all of Seattle. An empty view means no matching entries here—not no crime. Police-wide burglary totals are not treated as restaurant totals.</p></details><details><summary>Dates, costs & repeat incidents</summary><p>Approximate incident windows are explicit and overlap date filters. Cross-month uncertain incidents are not assigned an invented chart month. Cost floors sum available lower estimates, exclude unknown costs and upper-only estimates, and are not audited, inflation-adjusted, net of insurance or net of grants. Shared premises are counted once. Repeat counts require two separately mapped incidents at the same location in the selected range.</p></details><details><summary>Reporting standards & corrections</summary><p>“Sourced” means a public report supports the entry—not independent police confirmation or proof of guilt. Entries distinguish burglary, attempted entry, outdoor theft and vandalism. We do not name suspects or infer links between incidents. Pins are approximate address locations (ArcGIS geocoding / address placement), not crime-scene coordinates.</p><a id="correction-link" href="https://github.com/alexpepperl/seattle-restaurant-watch/issues/new">Suggest a report or request a correction ↗</a><p>Include a public source, business address and incident date. Do not post private information, accusations, security vulnerabilities or identifying images of alleged suspects. For an emergency call 911; this is not a police reporting service.</p></details><details><summary>Original reporting</summary><div id="source-links"></div></details><a class="text-link" href="data/incidents.json" download>Download the sourced dataset (JSON) ↓</a></article></div>
+    </section>
+  </main>
+  <footer class="wrap"><a class="brand footer-brand" href="#">SEATTLE RESTAURANT WATCH</a><p>Independent. Community-minded. Rooted in public sources.</p><a href="https://github.com/alexpepperl/seattle-restaurant-watch" target="_blank" rel="noopener noreferrer">Open-source project ↗</a><span>Not affiliated with the City of Seattle or SPD.</span></footer>
+  <dialog id="incident-dialog" aria-labelledby="dialog-title"><button id="close-dialog" class="dialog-close" aria-label="Close incident details">×</button><div id="dialog-content"></div></dialog>
+  <noscript><div class="noscript-note">JavaScript is required for the interactive map and filters. <a href="data/incidents.json">Read the complete sourced dataset here.</a></div></noscript>
+</body>
+</html>

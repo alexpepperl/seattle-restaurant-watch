@@ -1,0 +1,17 @@
+{
+  "name": "seattle-restaurant-watch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "test": "node --test",
+    "refresh": "node scripts/refresh.mjs"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.3.0",
+    "leaflet": "1.9.4"
+  },
+  "engines": { "node": ">=22" }
+}

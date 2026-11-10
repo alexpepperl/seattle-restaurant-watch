@@ -1,0 +1,41 @@
+{
+  "lastCheckedAt": "2026-11-10T21:55:16.579Z",
+  "feeds": [
+    {
+      "id": "my-ballard",
+      "name": "My Ballard",
+      "url": "https://www.myballard.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "west-seattle",
+      "name": "West Seattle Blog",
+      "url": "https://westseattleblog.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "capitol-hill",
+      "name": "Capitol Hill Seattle",
+      "url": "https://www.capitolhillseattle.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
+      "error": null,
+      "warnings": []
+    }
+  ],
+  "leads": [
+    {
+      "title": "Saleh’s Delicatessen broken into twice in two months",
+      "url": "https://www.myballard.com/2026/11/09/salehs-delicatessen-broken-into-twice-in-two-months/",
+      "publisher": "My Ballard",
+      "publishedAt": "2026-11-09T22:49:19.000Z",
+      "firstSeenAt": "2026-11-10T21:55:16.579Z"
+    }
+  ]
+}
