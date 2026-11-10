@@ -100,11 +100,12 @@ function renderMap(stats, fit) {
     if (mode === 'density') {
       L.circle(point, { radius: 150 + count * 100, color: count > 1 ? '#193e36' : '#d95c37', weight: 1, fillOpacity: .18 }).bindPopup(popup).addTo(layer);
     }
-    L.marker(point, {
+    const marker = L.marker(point, {
       title: `${location.name}: ${count} mapped ${count === 1 ? 'incident' : 'incidents'}`,
       alt: `${location.name}, ${location.neighborhood}`,
       icon: L.divIcon({ className: 'restaurant-marker', html: `<div class="map-pin${count > 1 ? ' is-repeat' : ''}"><span>${count > 1 ? count : '·'}</span></div>`, iconSize: [24, 30], iconAnchor: [12, 27], popupAnchor: [0, -25] })
     }).bindPopup(popup).addTo(layer);
+    marker.getElement().setAttribute('aria-label', `${location.name}: ${count} mapped ${count === 1 ? 'incident' : 'incidents'}. Open location summary.`);
   }
   if (fit && points.length) map.fitBounds(L.latLngBounds(points).pad(.16), { maxZoom: 15, animate: false });
   if (fit && !points.length) map.setView([47.626, -122.382], 11);
@@ -138,8 +139,8 @@ function renderSupport(stats) {
 function showLocation(id, incidentId) {
   const location = locationFor(id);
   if (!location) return;
-  selectedId = incidentId;
   const incidents = visible.filter(incident => incident.locationId === id);
+  selectedId = incidentId || incidents[0]?.id;
   const closed = location.status === 'closure-reported';
   const visitLink = closed ? data.sources[location.statusSourceId].url : location.website;
   $('dialog-content').innerHTML = `<div class="dialog-eyebrow">${esc(location.neighborhood.toUpperCase())} · SOURCED REPORTS</div>
@@ -273,6 +274,15 @@ document.addEventListener('click', event => {
   }
 });
 $('close-dialog').addEventListener('click', () => $('incident-dialog').close());
+$('incident-dialog').addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    $('incident-dialog').close();
+  }
+});
+$('incident-dialog').addEventListener('close', () => {
+  if (selectedId) document.querySelector(`[data-incident="${CSS.escape(selectedId)}"]`)?.focus({ preventScroll: true });
+});
 $('incident-dialog').addEventListener('click', event => {
   if (event.target !== $('incident-dialog')) return;
   const rect = event.target.getBoundingClientRect();
