@@ -44,15 +44,31 @@ export function parseFeed(xml, feed) {
   return { leads, warnings };
 }
 
-export async function collectFeeds(previous, { fetcher = fetch, now = new Date() } = {}) {
+async function fetchFeed(feed, fetcher, wait) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    let response;
+    try {
+      response = await fetcher(feed.url, { headers: { 'User-Agent': 'SeattleRestaurantWatch/1.0 (+https://github.com/alexpepperl/seattle-restaurant-watch)', Accept: 'application/rss+xml, application/xml, text/xml' }, signal: AbortSignal.timeout(25000) });
+    } catch (error) {
+      if (attempt === 2) throw error;
+      await wait(1000 * (attempt + 1));
+      continue;
+    }
+    if (response.ok) return { response, attempts: attempt + 1 };
+    if (attempt === 2 || (response.status !== 429 && response.status < 500)) throw new Error(`HTTP ${response.status}`);
+    await wait(1000 * (attempt + 1));
+  }
+}
+
+export async function collectFeeds(previous, { fetcher = fetch, now = new Date(), wait = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
   const timestamp = now.toISOString();
   const leads = new Map((previous.leads || []).map(lead => [lead.url, lead]));
   const feeds = await Promise.all(FEEDS.map(async feed => {
     const old = previous.feeds?.find(item => item.id === feed.id);
     try {
-      const response = await fetcher(feed.url, { headers: { 'User-Agent': 'SeattleRestaurantWatch/1.0 (+https://github.com/alexpepperl/seattle-restaurant-watch)', Accept: 'application/rss+xml, application/xml, text/xml' }, signal: AbortSignal.timeout(25000) });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const { response, attempts } = await fetchFeed(feed, fetcher, wait);
       const { leads: candidates, warnings } = parseFeed(await response.text(), feed);
+      if (attempts > 1) warnings.push(`Source recovered after ${attempts - 1} retries.`);
       for (const lead of candidates) leads.set(lead.url, { ...lead, firstSeenAt: leads.get(lead.url)?.firstSeenAt || timestamp });
       return { ...feed, status: 'ok', lastSuccessAt: timestamp, error: null, warnings };
     } catch (error) {

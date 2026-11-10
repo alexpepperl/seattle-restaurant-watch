@@ -28,8 +28,8 @@ function initMap() {
   }
   map = L.map('map', { scrollWheelZoom: false, zoomControl: true }).setView([47.626, -122.382], 11);
   let failedTiles = 0;
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
     maxZoom: 19
   }).on('tileerror', () => {
     if (++failedTiles >= 3) showMapError('Some background map tiles could not load. Location pins and the sourced report list are still available.');

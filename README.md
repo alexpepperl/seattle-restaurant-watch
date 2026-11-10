@@ -33,7 +33,7 @@ New headlines appear under **On our radar**, not on the incident map. A reviewer
 
 The browser rechecks published JSON every five minutes while visible. Its update button fetches published data; it does not trigger GitHub Actions or a fresh remote scrape. The site distinguishes the manually reviewed date, automated feed-check time, feed failures and overdue checks (18 hours). Retained leads are capped at 100. Feed failures preserve older leads, publish explicit health errors, and mark the Actions run as failed after deployment. GitHub schedules are best-effort, may be delayed and can be disabled by GitHub after extended inactivity.
 
-The local monitor can be run with `npm run refresh`; rebuild afterwards. The monitor never writes incident records.
+The local monitor can be run with `npm run refresh`; rebuild afterwards. The monitor never writes incident records. Temporary network failures, HTTP 429 and server errors receive at most two short backoff retries. Access-denied responses are not retried or bypassed.
 
 ## Publishing
 
@@ -51,6 +51,6 @@ The site advocates effective lawful enforcement, investigation, prevention and m
 
 ## Dependencies and privacy
 
-Leaflet is packaged locally at build time. CARTO / OpenStreetMap provide the map tiles; Google Fonts supplies optional typefaces (system-font fallback). Those providers receive ordinary browser requests. There is no analytics, account system, location permission request or private social-media scraping. Public GitHub issues are used for source suggestions and corrections; never submit private data or accusations.
+Leaflet is packaged locally at build time. OpenStreetMap provides the standard raster map tiles; Google Fonts supplies optional typefaces (system-font fallback). Those providers receive ordinary browser requests. The map uses only interactive viewport tile loading, retains normal browser caching and displays OpenStreetMap attribution; do not add bulk/offline downloads or strip the browser referrer. Review the [OSM tile usage policy](https://operations.osmfoundation.org/policies/tiles/) and move to an appropriate hosted provider if traffic outgrows the community service. There is no analytics, account system, location permission request or private social-media scraping. Public GitHub issues are used for source suggestions and corrections; never submit private data or accusations.
 
 Tests cover source/data consistency, totals, repeat premises, filter boundaries, uncertain dates, chart accounting, HTML escaping, unsafe URL exclusion, malformed RSS, source-host validation, failures and lead deduplication.

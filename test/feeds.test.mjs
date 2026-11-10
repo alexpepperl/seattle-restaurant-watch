@@ -30,7 +30,7 @@ test('invalid article hosts, protocols and dates are skipped with warnings', () 
 });
 test('feed failures preserve previous leads and success timestamps without implying success', async () => {
   const previous = { leads: [{ title: 'Cafe break-in', url: 'https://www.myballard.com/old/', publisher: 'My Ballard', publishedAt: '2026-11-01T00:00:00.000Z', firstSeenAt: '2026-11-02T00:00:00.000Z' }], feeds: [{ id: 'my-ballard', lastSuccessAt: '2026-11-02T00:00:00.000Z' }] };
-  const result = await collectFeeds(previous, { fetcher: async () => { throw new Error('Connection refused'); }, now: new Date('2026-11-10T12:00:00Z') });
+  const result = await collectFeeds(previous, { fetcher: async () => { throw new Error('Connection refused'); }, now: new Date('2026-11-10T12:00:00Z'), wait: async () => {} });
   assert.equal(result.leads.length, 1);
   assert.ok(result.feeds.every(feed => feed.status === 'error'));
   assert.equal(result.feeds[0].lastSuccessAt, previous.feeds[0].lastSuccessAt);
@@ -44,4 +44,25 @@ test('successful monitoring deduplicates leads and never changes the reviewed ma
   assert.equal(second.leads[0].firstSeenAt, first.leads[0].firstSeenAt);
   assert.ok(second.feeds.every(feed => feed.status === 'ok'));
   assert.equal('incidents' in second, false);
+});
+test('transient 503 responses retry with bounded backoff and report recovery', async () => {
+  const attempts = new Map();
+  const waits = [];
+  const result = await collectFeeds({ leads: [], feeds: [] }, {
+    fetcher: async url => {
+      const count = (attempts.get(url) || 0) + 1;
+      attempts.set(url, count);
+      return count === 1 ? { ok: false, status: 503 } : { ok: true, text: async () => rss('') };
+    },
+    wait: async ms => { waits.push(ms); }
+  });
+  assert.ok(result.feeds.every(feed => feed.status === 'ok'));
+  assert.ok(result.feeds.every(feed => feed.warnings.includes('Source recovered after 1 retries.')));
+  assert.deepEqual(waits, [1000, 1000, 1000]);
+});
+test('non-transient 403 responses fail without retries or source substitution', async () => {
+  let requests = 0;
+  const result = await collectFeeds({ leads: [], feeds: [] }, { fetcher: async () => { requests++; return { ok: false, status: 403 }; }, wait: async () => assert.fail('Unexpected retry') });
+  assert.equal(requests, 3);
+  assert.ok(result.feeds.every(feed => feed.status === 'error' && feed.error === 'HTTP 403'));
 });
