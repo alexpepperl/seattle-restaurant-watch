@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { filterIncidents, summarize, monthlyCounts, rangeForPeriod, escapeHTML, safeURL } from '../public/domain.js';
+import { filterIncidents, filterPolice, summarize, monthlyCounts, rangeForPeriod, escapeHTML, safeURL, toCSV } from '../public/domain.js';
+import { FEEDS } from '../scripts/feeds.mjs';
 
 const data = JSON.parse(await readFile(new URL('../public/data/incidents.json', import.meta.url)));
 test('all starting reports have valid, unique ids, source references, dates and Seattle map points', () => {
@@ -31,11 +32,11 @@ test('all starting reports have valid, unique ids, source references, dates and 
 });
 test('totals count shared premises once, repeats and lower costs without upper-only estimates', () => {
   const stats = summarize(data.incidents);
-  assert.equal(stats.incidents, 15);
-  assert.equal(stats.locations, 12);
+  assert.equal(stats.incidents, 18);
+  assert.equal(stats.locations, 15);
   assert.equal(stats.repeats, 2);
-  assert.equal(stats.cost, 32600);
-  assert.equal(stats.costCount, 6);
+  assert.equal(stats.cost, 47600);
+  assert.equal(stats.costCount, 8);
   assert.equal(stats.moreThan, true);
 });
 test('30 day preset is inclusive and based on today rather than the newest report', () => {
@@ -58,7 +59,7 @@ test('neighborhood, type and normalized search filters combine', () => {
 test('monthly bars never invent a month for cross-month uncertain dates', () => {
   const chart = monthlyCounts(data.incidents, '', '');
   assert.equal(chart.uncertain, 2);
-  assert.equal(chart.months.reduce((sum, month) => sum + month.count, 0) + chart.uncertain, 15);
+  assert.equal(chart.months.reduce((sum, month) => sum + month.count, 0) + chart.uncertain, 18);
   assert.equal(chart.months.find(month => month.key === '2026-02').count, 3);
   assert.equal(chart.months.find(month => month.key === '2026-04').count, 3);
   assert.deepEqual(monthlyCounts([], '', ''), { months: [], uncertain: 0 });
@@ -69,4 +70,37 @@ test('display escaping and URL guards exclude injected markup and unsafe protoco
   assert.equal(safeURL('http://example.com'), '#');
   assert.equal(safeURL('not a url'), '#');
   assert.equal(safeURL('https://example.com/'), 'https://example.com/');
+});
+test('Ballard pilot remains distinct from retained Seattle sample and police records', () => {
+  const pilot = filterIncidents(data, { neighborhood: 'Ballard' });
+  assert.equal(pilot.length, 14);
+  assert.equal(summarize(pilot).locations, 13);
+  assert.equal(summarize(pilot).cost, 46600);
+  assert.ok(pilot.every(incident => !('reportNumber' in incident)));
+});
+test('source directory declares real feed ids and access limitations without duplicate entries', async () => {
+  const directory = JSON.parse(await readFile(new URL('../public/data/sources.json', import.meta.url)));
+  assert.equal(new Set(directory.sources.map(source => source.id)).size, directory.sources.length);
+  assert.equal(FEEDS.length, 9);
+  for (const source of directory.sources) {
+    assert.ok(['official', 'reporting', 'social', 'community'].includes(source.category));
+    assert.notEqual(safeURL(source.url), '#');
+    for (const id of source.feedIds || []) assert.ok(FEEDS.some(feed => feed.id === id));
+  }
+  assert.ok(directory.sources.filter(source => source.category === 'social').every(source => source.access !== 'automatic'));
+});
+test('police search, commercial classification and date overlap are independent filters', () => {
+  const records = [
+    { id: 'one', start: '2026-01-01', end: '2026-01-03', neighborhoods: ['BALLARD NORTH'], beats: ['J2'], blocks: ['24XX BLOCK OF NW 80TH ST'], commercial: false },
+    { id: 'two', start: '2026-04-01', end: '2026-04-01', neighborhoods: ['BALLARD SOUTH'], beats: ['B2'], commercial: true }
+  ];
+  assert.deepEqual(filterPolice(records, { start: '2026-01-02', end: '2026-01-02', query: '80TH' }).map(record => record.id), ['one']);
+  assert.deepEqual(filterPolice(records, { commercialOnly: true }).map(record => record.id), ['two']);
+  assert.deepEqual(filterPolice(records, { query: 'not a business attribution' }), []);
+});
+test('CSV preserves a proper quoted shape and neutralizes spreadsheet formulas', () => {
+  const csv = toCSV(['Name', 'Value'], [['Comma, and "quotes"', 'line\nbreak'], [' =HYPERLINK("bad")', '@SUM(1)']]);
+  assert.ok(csv.startsWith('\uFEFF"Name","Value"\r\n'));
+  assert.ok(csv.includes('"Comma, and ""quotes""","line\nbreak"'));
+  assert.ok(csv.includes('"\' =HYPERLINK(""bad"")","\'@SUM(1)"'));
 });

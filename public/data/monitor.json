@@ -1,30 +1,88 @@
 {
-  "lastCheckedAt": "2026-11-10T22:09:35.830Z",
+  "lastCheckedAt": "2026-11-10T23:14:29.192Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T22:09:35.830Z",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
       "error": null,
       "warnings": []
     },
     {
-      "id": "west-seattle",
-      "name": "West Seattle Blog",
-      "url": "https://westseattleblog.com/feed/",
-      "status": "error",
-      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
-      "error": "HTTP 503",
+      "id": "my-ballard-breakins",
+      "name": "My Ballard · break-in archive",
+      "url": "https://www.myballard.com/?s=break-in&feed=rss2",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
       "warnings": []
     },
     {
-      "id": "capitol-hill",
-      "name": "Capitol Hill Seattle",
-      "url": "https://www.capitolhillseattle.com/feed/",
+      "id": "my-ballard-burglary",
+      "name": "My Ballard · burglary archive",
+      "url": "https://www.myballard.com/?s=burglar&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T22:09:35.830Z",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "my-ballard-vandalism",
+      "name": "My Ballard · vandalism archive",
+      "url": "https://www.myballard.com/?s=vandal&feed=rss2",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "spd-blotter",
+      "name": "SPD Blotter",
+      "url": "https://spdblotter.seattle.gov/feed/",
+      "ballardOnly": true,
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "king5",
+      "name": "KING 5",
+      "url": "https://www.king5.com/feeds/syndication/rss/news/local",
+      "ballardOnly": true,
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "fox13",
+      "name": "FOX 13 Seattle",
+      "url": "https://www.fox13seattle.com/rss/category/news",
+      "ballardOnly": true,
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "kiro7",
+      "name": "KIRO 7",
+      "url": "https://www.kiro7.com/arc/outboundfeeds/rss/category/news/local/?outputType=xml",
+      "ballardOnly": true,
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "ballard-alliance",
+      "name": "Ballard Alliance",
+      "url": "https://ballardalliance.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-10T23:14:29.192Z",
       "error": null,
       "warnings": []
     }
@@ -33,9 +91,177 @@
     {
       "title": "Saleh’s Delicatessen broken into twice in two months",
       "url": "https://www.myballard.com/2026/11/09/salehs-delicatessen-broken-into-twice-in-two-months/",
-      "publisher": "My Ballard",
+      "publisher": "My Ballard · break-in archive",
       "publishedAt": "2026-11-09T22:49:19.000Z",
       "firstSeenAt": "2026-11-10T21:55:16.579Z"
+    },
+    {
+      "title": "Sloop Tavern hit by copper theft, faces $5,000 repair bill",
+      "url": "https://www.myballard.com/2026/07/31/sloop-tavern-hit-by-copper-theft-faces-5000-repair-bill/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2026-07-31T20:05:23.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Five Guys closes Ballard location at 15th and Market",
+      "url": "https://www.myballard.com/2026/07/07/five-guys-closes-ballard-location-at-15th-and-market/",
+      "publisher": "My Ballard · burglary archive",
+      "publishedAt": "2026-07-07T17:49:06.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Highland Espresso reports break-in, theft at two-month-old Ballard cafe",
+      "url": "https://www.myballard.com/2026/06/29/highland-espresso-reports-break-in-theft-at-two-month-old-ballard-cafe/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2026-06-29T21:46:58.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Dough Joy burglarized on its 5th anniversary",
+      "url": "https://www.myballard.com/2026/05/21/dough-joy-burglarized-on-its-5th-anniversary/",
+      "publisher": "My Ballard · burglary archive",
+      "publishedAt": "2026-05-21T17:40:18.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard businesses face ongoing break-ins as city leaders respond",
+      "url": "https://www.myballard.com/2026/05/06/ballard-businesses-face-ongoing-break-ins-as-city-leaders-respond/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2026-05-06T21:19:13.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Five Guys & Ballard Coffee Co. burglarized overnight",
+      "url": "https://www.myballard.com/2026/04/28/five-guys-ballard-coffee-co-burglarized-overnight/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2026-04-28T18:06:18.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard restaurants report break-ins, vandalism and frustration over response",
+      "url": "https://www.myballard.com/2026/02/20/ballard-restaurants-report-break-ins-vandalism-and-frustration-over-response/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2026-02-20T17:39:56.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Business closures draw attention, but Ballard data points to steady turnover",
+      "url": "https://www.myballard.com/2026/01/22/business-closures-draw-attention-but-ballard-data-points-to-steady-turnover/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2026-01-22T21:05:05.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Thai Siam to reopen on May 14 after closing last month",
+      "url": "https://www.myballard.com/2025/05/12/thai-siam-to-reopen-on-may-14-after-closing-last-month/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2025-05-12T16:01:32.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Wild Mountain Cafe launches fundraiser after burglars steal $5k",
+      "url": "https://www.myballard.com/2024/11/15/wild-mountain-cafe-launches-fundraiser-after-burglars-steal-5k/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2024-11-15T20:02:36.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "8oz. Burger closing after 10 years in Ballard",
+      "url": "https://www.myballard.com/2024/10/30/8oz-burger-closing-after-10-years-in-ballard/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2024-10-30T15:57:49.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Vandal targets Petco in Crown Hill, breaks five windows with a crowbar",
+      "url": "https://www.myballard.com/2023/09/22/vandal-targets-petco-in-crown-hill-breaks-five-windows-with-a-crowbar/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2023-09-22T20:05:34.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard Station and Ballard Hockey Bar to close in September to make way for new apartment complex",
+      "url": "https://www.myballard.com/2022/05/31/ballard-station-and-ballard-hockey-bar-to-close-in-september-to-make-way-for-new-apartment-complex/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2022-05-31T17:35:17.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard Hockey Bar opens this weekend on NW Market St",
+      "url": "https://www.myballard.com/2022/03/04/ballard-hockey-bar-opens-this-weekend-on-nw-market-st/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2022-03-04T17:37:06.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard cafe owner seeking other businesses to band together to hire private security company",
+      "url": "https://www.myballard.com/2021/12/17/ballard-cafe-owner-seeking-other-businesses-to-band-together-to-hire-private-security-company/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2021-12-17T16:57:10.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "4Bs Ballard Grill & Alehouse reopening today under new ownership",
+      "url": "https://www.myballard.com/2021/12/15/4bs-ballard-grill-alehouse-reopening-today-under-new-ownership/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2021-12-15T17:07:19.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Several Ballard businesses vandalized over the weekend",
+      "url": "https://www.myballard.com/2021/11/08/several-ballard-businesses-vandalized-over-the-weekend/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2021-11-08T23:37:47.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard Starbucks closed temporarily for updates",
+      "url": "https://www.myballard.com/2021/11/02/ballard-starbucks-closed-temporarily-for-updates/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2021-11-02T20:50:08.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Thieves target numerous Ballard businesses in recent spate of break-ins",
+      "url": "https://www.myballard.com/2021/10/20/thieves-target-numerous-ballard-businesses-in-recent-spate-of-break-ins/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2021-10-20T16:49:01.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard Blossom now home to pop-up tenants selling donuts, boxing classes, and locally made clothes",
+      "url": "https://www.myballard.com/2021/04/30/ballard-blossom-now-home-to-pop-up-tenants-selling-donuts-boxing-classes-and-locally-made-clothes/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2021-04-30T17:42:54.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard businesses report surge in crime, lost revenue",
+      "url": "https://www.myballard.com/2020/11/20/ballard-businesses-report-surge-in-crime-lost-revenue/",
+      "publisher": "My Ballard · break-in archive",
+      "publishedAt": "2020-11-20T17:57:16.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Ballard Community Center field damaged by cars doing doughnuts",
+      "url": "https://www.myballard.com/2020/09/29/ballard-community-center-field-damaged-by-cars-doing-doughnuts/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2020-09-29T15:43:32.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Giant menorah lighting this Sunday at Bergen Place",
+      "url": "https://www.myballard.com/2018/11/30/giant-menorah-lighting-this-sunday-at-bergen-place/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2018-11-30T22:34:51.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
+    },
+    {
+      "title": "Food truck owners write open letter to city about ‘massive increase’ in crime",
+      "url": "https://www.myballard.com/2018/02/27/food-truck-owners-write-open-letter-to-city-about-massive-increase-in-crime/",
+      "publisher": "My Ballard · vandalism archive",
+      "publishedAt": "2018-02-28T00:37:20.000Z",
+      "firstSeenAt": "2026-11-10T23:02:17.634Z"
     }
   ]
 }

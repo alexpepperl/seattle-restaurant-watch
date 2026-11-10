@@ -1,4 +1,4 @@
-import { TYPES, rangeForPeriod, filterIncidents, summarize, monthlyCounts, money, escapeHTML as esc, safeURL } from './domain.js';
+import { TYPES, rangeForPeriod, filterIncidents, filterPolice, summarize, monthlyCounts, money, toCSV, escapeHTML as esc, safeURL } from './domain.js';
 
 const $ = id => document.getElementById(id);
 let data;
@@ -9,6 +9,13 @@ let mode = 'pins';
 let selectedId;
 let updating = false;
 let lastFilters = {};
+let policeData;
+let policeLoadError = '';
+let policeKind = 'crime';
+let policePage = 0;
+let sourceDirectory;
+let monitorData;
+const pageSize = 25;
 const external = 'target="_blank" rel="noopener noreferrer"';
 const typeTag = type => `<span class="type-tag type-${esc(type)}">${esc(TYPES[type])}</span>`;
 const locationFor = id => data.locations.find(location => location.id === id);
@@ -51,6 +58,7 @@ function readFilters() {
   const invalid = custom && ((!range.start || !range.end) || range.start > range.end || !$('start-date').validity.valid || !$('end-date').validity.valid);
   $('date-error').textContent = invalid ? 'Choose a valid start and end date. Previous results remain visible; export is disabled.' : '';
   $('download').disabled = Boolean(invalid);
+  $('police-download').disabled = Boolean(invalid) || !policeData?.[policeKind]?.lastSuccessAt;
   if (invalid) return null;
   return { ...range, neighborhood: $('neighborhood').value, type: $('type').value, query: $('search').value };
 }
@@ -74,6 +82,8 @@ function render(fit = true) {
   renderMap(stats, fit);
   renderTrends(stats);
   renderSupport(stats);
+  policePage = 0;
+  renderPolice();
 }
 
 function renderList() {
@@ -92,6 +102,18 @@ function renderMap(stats, fit) {
   if (!map) return;
   layer.clearLayers();
   const points = [];
+  let contextPoints = 0;
+  if ($('police-overlay').checked && policeData) {
+    for (const record of filterPolice(policeData.crime.records, { start: lastFilters.start, end: lastFilters.end })) {
+      if (!record.point) continue;
+      points.push(record.point);
+      contextPoints++;
+      L.circleMarker(record.point, { radius: 5, color: '#416d93', weight: 1, fillOpacity: .3 })
+        .bindPopup(`<h3>SPD report ${esc(record.id)}</h3><p>${esc(record.blocks.join(' / ') || 'Block withheld')}<br>${esc(record.start)} · ${esc(record.neighborhoods.join(' / '))}</p><p>All-premises burglary. Not attributed to a restaurant. Source location is blurred.</p><a href="${esc(safeURL(record.sourceURL))}" ${external}>Open official listing ↗</a>`)
+        .addTo(layer);
+    }
+  }
+  $('map-count').textContent = `${stats.locations} restaurant locations${contextPoints ? ` · ${contextPoints} police points` : ''}`;
   for (const [locationId, count] of stats.counts) {
     const location = locationFor(locationId);
     const point = [location.lat, location.lng];
@@ -145,13 +167,14 @@ function showLocation(id, incidentId) {
   const visitLink = closed ? data.sources[location.statusSourceId].url : location.website;
   $('dialog-content').innerHTML = `<div class="dialog-eyebrow">${esc(location.neighborhood.toUpperCase())} · SOURCED REPORTS</div>
     <h2 id="dialog-title">${esc(location.name)}</h2><p class="dialog-address">${esc(location.address)}, Seattle · approximate map pin</p>
-    ${closed ? '<p class="dialog-footnote">Closure reported in May 2026. This is a historical incident location, not an active dining recommendation.</p>' : ''}
+    ${closed ? `<p class="dialog-footnote">Closure reported in ${esc(location.closureLabel || 'May 2026')}. This is a historical incident location, not an active dining recommendation. The incident record does not establish why the business closed.</p>` : ''}
     <div class="dialog-actions"><a class="button button-orange" href="${esc(safeURL(visitLink))}" ${external}>${closed ? 'Read closure report' : 'Plan a visit'} ↗</a><a class="button button-outline" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${location.name} ${location.address} Seattle`)}" ${external}>${closed ? 'View former location' : 'Get directions'} ↗</a></div>
     ${incidents.map(incident => {
       const source = data.sources[incident.sourceId];
       return `<article class="detail-incident"><h3>${esc(incident.dateLabel)} ${typeTag(incident.type)}</h3><p>${esc(incident.summary)}</p><p>${esc(incident.details)}</p>
         ${incident.cost ? `<div class="detail-cost"><strong>${esc(incident.cost.label)}</strong><small>${esc(incident.cost.kind)} · owner / media estimate, not audited</small></div>` : '<p class="fine-print">Cost not reported. This does not mean no financial loss.</p>'}
-        <a class="detail-source" href="${esc(safeURL(source.url))}" ${external}>${esc(source.publisher)} · published ${fullDate(source.published)} ↗</a></article>`;
+        <a class="detail-source" href="${esc(safeURL(source.url))}" ${external}>${esc(source.publisher)} · published ${fullDate(source.published)} ↗</a>
+        ${(incident.relatedSources || []).map(related => `<p class="related-source"><a href="${esc(safeURL(related.url))}" ${external}>${esc(related.label)} ↗</a><small>${esc(related.note)}</small></p>`).join('')}</article>`;
     }).join('')}<p class="dialog-footnote">Showing ${incidents.length} mapped reports in your current filters. Check current hours and operating status with the business. Sourced reporting is not independent police confirmation.</p>`;
   if (map) map.setView([location.lat, location.lng], Math.max(14, map.getZoom()), { animate: false });
   renderList();
@@ -180,19 +203,89 @@ function renderMonitor(monitor) {
   $('feed-health').innerHTML = monitor.feeds.map(feed => `<div class="feed-row${feed.status === 'ok' ? '' : ' feed-error'}"><strong>${esc(feed.name)} · ${esc(feed.status)}</strong>${feed.error ? esc(feed.error) : 'Public RSS feed'}${feed.lastSuccessAt ? `<br>Last successful check: ${esc(new Date(feed.lastSuccessAt).toLocaleString())}` : ''}${(feed.warnings || []).map(warning => `<p class="feed-error">${esc(warning)}</p>`).join('')}</div>`).join('');
 }
 
+function policeMatches(kind = policeKind, search = true) {
+  if (!policeData) return [];
+  return filterPolice(policeData[kind].records, {
+    start: lastFilters.start, end: lastFilters.end,
+    query: search ? $('police-search').value : '',
+    commercialOnly: search && kind === 'calls' && $('commercial-only').checked
+  });
+}
+
+function renderPolice() {
+  if (!policeData) {
+    if (policeLoadError) {
+      $('police-health').textContent = policeLoadError;
+      $('police-health').classList.add('feed-error');
+      $('police-rows').innerHTML = '<tr><td colspan="5">Official listings are unavailable. Use “Check for updates” to retry. Missing data does not mean no incidents.</td></tr>';
+    }
+    return;
+  }
+  for (const [id, kind, commercial] of [['police-crime-count', 'crime', false], ['police-call-count', 'calls', false], ['police-commercial-count', 'calls', true]]) {
+    const records = policeMatches(kind, false);
+    $('police-crime-count').title = 'Not a count of restaurant break-ins';
+    const source = policeData[kind];
+    $(id).textContent = source.lastSuccessAt ? (commercial ? records.filter(record => record.commercial).length : records.length) : '—';
+  }
+  $('police-window').textContent = `Date window: ${lastFilters.start || policeData.since} to ${lastFilters.end || 'latest available'}. Downloads begin ${policeData.since}; earlier dates are not covered. Uses only the incident explorer’s date filter, not its restaurant, neighborhood or type filters.`;
+  const source = policeData[policeKind];
+  $('police-download').disabled = Boolean($('date-error').textContent) || !source.lastSuccessAt;
+  $('police-overlay').disabled = !policeData.crime.lastSuccessAt;
+  const records = policeMatches();
+  const pages = Math.max(1, Math.ceil(records.length / pageSize));
+  policePage = Math.min(policePage, pages - 1);
+  $('commercial-control').hidden = policeKind !== 'calls';
+  for (const [id, kind] of [['crime-tab', 'crime'], ['calls-tab', 'calls']]) {
+    $(id).classList.toggle('active', policeKind === kind);
+    $(id).setAttribute('aria-pressed', String(policeKind === kind));
+  }
+  const stale = !source.sourceUpdatedAt || Date.now() - new Date(source.sourceUpdatedAt).getTime() > 72 * 3600000;
+  const downloadStale = !source.lastSuccessAt || Date.now() - new Date(source.lastSuccessAt).getTime() > 18 * 3600000;
+  $('police-health').classList.toggle('feed-error', Boolean(policeLoadError) || source.status !== 'ok' || stale || downloadStale);
+  const timestamp = value => value ? new Date(value).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) : 'not yet available';
+  $('police-health').textContent = `${policeLoadError ? `${policeLoadError} ` : ''}${source.name || 'Official source'} · ${source.status}. ${source.error ? `${source.error}. Prior complete snapshot retained. ` : ''}Source last updated: ${timestamp(source.sourceUpdatedAt)}. Last successful download: ${timestamp(source.lastSuccessAt)}.${stale ? ' Underlying source is missing or more than 72 hours old.' : ''}${downloadStale ? ' Download is overdue or has not succeeded.' : ''}`;
+  $('police-table-caption').textContent = `${records.length} ${policeKind === 'crime' ? 'distinct report numbers' : 'distinct CAD events'} in this police view · not restaurant incident totals`;
+  $('police-rows').innerHTML = records.length ? records.slice(policePage * pageSize, (policePage + 1) * pageSize).map(record => {
+    const classification = policeKind === 'crime'
+      ? `<strong>Burglary / Breaking & Entering</strong><small>${esc(record.blocks.join(' / ') || 'Block withheld')} · premises type not supplied</small><small>${record.offenseIds.length} distinct burglary offense ID(s)</small>`
+      : `<strong>${esc(record.finalTypes.join(' / ') || 'No final type supplied')}</strong><small>Initial: ${esc(record.initialTypes.join(' / ') || 'Not supplied')}</small><small>Recorded clearance: ${esc(record.clearances.join(' / ') || 'Not supplied')} · not a court outcome</small>`;
+    return `<tr><th scope="row">${esc(record.id)}</th><td>${esc(record.start)}${record.end !== record.start ? ` to ${esc(record.end)}` : ''}<small>${esc(record.dateBasis)}</small></td><td>${esc(record.neighborhoods.join(' / '))}<small>${esc(record.beats.join(' / ') || 'Beat not supplied')}</small></td><td>${classification}</td><td><a href="${esc(safeURL(record.sourceURL))}" ${external}>City data record ↗</a><small>${policeKind === 'crime' ? 'Metadata, not a full narrative' : 'Beat-level display; no map point'}</small></td></tr>`;
+  }).join('') : `<tr><td colspan="5">${source.lastSuccessAt ? 'No matching listings in this snapshot. Try another date window or police search; this does not establish that no crime occurred.' : 'No successful source download yet. This is not a zero count.'}</td></tr>`;
+  $('police-page').textContent = `${records.length ? policePage * pageSize + 1 : 0}–${Math.min(records.length, (policePage + 1) * pageSize)} of ${records.length}`;
+  $('police-prev').disabled = policePage === 0;
+  $('police-next').disabled = policePage === pages - 1;
+}
+
+function renderDirectory() {
+  if (!sourceDirectory) return;
+  const sources = sourceDirectory.sources;
+  const category = $('source-category').value;
+  $('source-directory-count').textContent = `${sources.length} source entries · 9 RSS channels across 6 publishers / organizations · 2 official datasets. Social and manual entries are not automated connections.`;
+  const labels = { official: 'Police & official data', reporting: 'Local journalism', social: 'Public social media', community: 'Business & recovery' };
+  $('source-directory').innerHTML = sources.filter(source => !category || source.category === category).map(source => {
+    let health = source.access === 'limited' ? 'Limited access · no automatic ingestion' : 'Manual review / discovery';
+    if (source.policeKey) health = `Automatic dataset · ${policeData?.[source.policeKey]?.status || 'not checked'}`;
+    if (source.feedIds) {
+      const feeds = source.feedIds.map(id => monitorData?.feeds.find(feed => feed.id === id));
+      health = `Saved RSS check · ${feeds.filter(feed => feed?.status === 'ok').length}/${feeds.length} channels OK`;
+    }
+    return `<article class="directory-card"><div class="directory-meta"><span>${labels[source.category]}</span><span class="access-tag access-${esc(source.access)}">${esc(source.access)}</span></div><h3><a href="${esc(safeURL(source.url))}" ${external}>${esc(source.name)} ↗</a></h3><p class="directory-health">${esc(health)}</p><details><summary>Coverage & access limits</summary><p>${esc(source.notes)}</p>${source.via ? `<a href="${esc(safeURL(source.via))}" ${external}>Where this link was documented ↗</a>` : ''}</details></article>`;
+  }).join('');
+}
+
 async function update(initial = false) {
   if (updating) return;
   updating = true;
   $('refresh').disabled = true;
   $('refresh').textContent = 'Checking published updates…';
-  const results = await Promise.allSettled([getJSON('data/incidents.json'), getJSON('data/monitor.json')]);
+  const results = await Promise.allSettled([getJSON('data/incidents.json'), getJSON('data/monitor.json'), getJSON('data/police.json'), getJSON('data/sources.json')]);
   try {
     if (results[0].status === 'fulfilled') {
       const next = results[0].value;
       if (!Array.isArray(next.incidents) || !Array.isArray(next.locations) || !next.sources) throw new Error('Invalid incident dataset');
       data = next;
-      const old = $('neighborhood').value;
-      $('neighborhood').innerHTML = '<option value="">All neighborhoods</option>' + [...new Set(data.locations.map(location => location.neighborhood))].sort().map(name => `<option value="${esc(name)}">${esc(name)}</option>`).join('');
+      const old = initial ? 'Ballard' : $('neighborhood').value;
+      $('neighborhood').innerHTML = '<option value="">Pilot + legacy Seattle sample</option>' + [...new Set(data.locations.map(location => location.neighborhood))].sort().map(name => `<option value="${esc(name)}"${name === 'Ballard' ? ' selected' : ''}>${esc(name)}${name === 'Ballard' ? ' · pilot' : ' · legacy sample'}</option>`).join('');
       $('neighborhood').value = [...$('neighborhood').options].some(option => option.value === old) ? old : '';
       $('load-error').hidden = true;
       render(initial);
@@ -208,11 +301,33 @@ async function update(initial = false) {
   }
   try {
     if (results[1].status === 'rejected') throw results[1].reason;
-    renderMonitor(results[1].value);
+    monitorData = results[1].value;
+    renderMonitor(monitorData);
   } catch (error) {
     console.error('Source monitoring unavailable:', error);
     $('monitor-status').textContent = `Source-monitor status is unavailable. ${error.message} Automatic checks cannot be confirmed.`;
     $('monitor-status').classList.add('feed-error');
+  }
+  try {
+    if (results[2].status === 'rejected') throw results[2].reason;
+    const next = results[2].value;
+    if (!Array.isArray(next.crime?.records) || !Array.isArray(next.calls?.records)) throw new Error('Invalid police snapshot format');
+    policeData = next;
+    policeLoadError = '';
+  } catch (error) {
+    console.error('Police snapshot unavailable:', error);
+    policeLoadError = `Police snapshot could not be refreshed: ${error.message}.`;
+  }
+  renderPolice();
+  renderMap(summarize(visible), false);
+  try {
+    if (results[3].status === 'rejected') throw results[3].reason;
+    if (!Array.isArray(results[3].value.sources)) throw new Error('Invalid source directory');
+    sourceDirectory = results[3].value;
+    renderDirectory();
+  } catch (error) {
+    console.error('Source directory unavailable:', error);
+    $('source-directory-count').textContent = `Source directory could not be refreshed: ${error.message}.`;
   }
   updating = false;
   $('refresh').disabled = false;
@@ -226,12 +341,15 @@ function downloadCSV() {
     const source = data.sources[incident.sourceId];
     return [location.name, location.neighborhood, location.address, TYPES[incident.type], incident.dateLabel, incident.start, incident.end, incident.precision, incident.cost?.label || 'Not reported', incident.summary, source.url, source.published];
   });
-  const quote = value => `"${String(value).replace(/^[=+\-@\t\r]/, "'$&").replace(/"/g, '""')}"`;
-  const blob = new Blob(['\uFEFF', [columns, ...rows].map(row => row.map(quote).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  saveCSV(toCSV(columns, rows), 'seattle-restaurant-watch.csv');
+}
+
+function saveCSV(contents, filename) {
+  const blob = new Blob([contents], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'seattle-restaurant-watch.csv';
+  link.download = filename;
   document.body.append(link);
   link.click();
   link.remove();
@@ -243,6 +361,17 @@ $('filters').addEventListener('input', () => render());
 $('filters').addEventListener('reset', () => setTimeout(() => render(), 0));
 $('refresh').addEventListener('click', () => update());
 $('download').addEventListener('click', downloadCSV);
+$('police-overlay').addEventListener('change', () => renderMap(summarize(visible), true));
+$('source-category').addEventListener('change', renderDirectory);
+for (const [id, kind] of [['crime-tab', 'crime'], ['calls-tab', 'calls']]) $(id).addEventListener('click', () => { policeKind = kind; policePage = 0; renderPolice(); });
+for (const id of ['police-search', 'commercial-only']) $(id).addEventListener('input', () => { policePage = 0; renderPolice(); });
+$('police-prev').addEventListener('click', () => { policePage--; renderPolice(); });
+$('police-next').addEventListener('click', () => { policePage++; renderPolice(); });
+$('police-download').addEventListener('click', () => {
+  const records = policeMatches();
+  const columns = ['Record type', 'Case / event', 'Start date', 'End date', 'Date basis', 'Neighborhoods', 'Beats', 'Blocks / final call types', 'Source'];
+  saveCSV(toCSV(columns, records.map(record => [policeKind, record.id, record.start, record.end, record.dateBasis, record.neighborhoods.join(' / '), record.beats.join(' / '), (record.blocks || record.finalTypes).join(' / '), record.sourceURL])), 'ballard-police-listings.csv');
+});
 $('fit-map').addEventListener('click', () => renderMap(summarize(visible), true));
 $('pins-mode').addEventListener('click', () => setMode('pins'));
 $('density-mode').addEventListener('click', () => setMode('density'));
@@ -289,5 +418,8 @@ $('incident-dialog').addEventListener('click', event => {
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) event.target.close();
 });
 initMap();
+$('download').disabled = true;
+$('police-download').disabled = true;
+$('police-overlay').disabled = true;
 update(true);
 setInterval(() => { if (!document.hidden) update(); }, 5 * 60 * 1000);

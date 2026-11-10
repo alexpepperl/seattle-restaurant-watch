@@ -52,3 +52,17 @@ export function monthlyCounts(incidents, start, end) {
 export const money = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 export const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 export const safeURL = value => { try { const url = new URL(value); return url.protocol === 'https:' ? url.href : '#'; } catch { return '#'; } };
+
+export function filterPolice(records, { start = '', end = '', query = '', commercialOnly = false } = {}) {
+  const search = query.toLowerCase().trim();
+  return records.filter(record =>
+    (!start || record.end >= start) && (!end || record.start <= end)
+    && (!commercialOnly || record.commercial)
+    && (!search || [record.id, ...(record.blocks || []), ...record.neighborhoods, ...record.beats, ...(record.initialTypes || []), ...(record.finalTypes || [])].join(' ').toLowerCase().includes(search))
+  );
+}
+
+export function toCSV(columns, rows) {
+  const quote = value => `"${String(value ?? '').replace(/^(?=\s*[=+\-@]|[\t\r])/, "'").replace(/"/g, '""')}"`;
+  return '\uFEFF' + [columns, ...rows].map(row => row.map(quote).join(',')).join('\r\n');
+}

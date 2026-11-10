@@ -1,9 +1,16 @@
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { fetchWithRetry } from './http.mjs';
 
 export const FEEDS = [
   { id: 'my-ballard', name: 'My Ballard', url: 'https://www.myballard.com/feed/' },
-  { id: 'west-seattle', name: 'West Seattle Blog', url: 'https://westseattleblog.com/feed/' },
-  { id: 'capitol-hill', name: 'Capitol Hill Seattle', url: 'https://www.capitolhillseattle.com/feed/' }
+  { id: 'my-ballard-breakins', name: 'My Ballard · break-in archive', url: 'https://www.myballard.com/?s=break-in&feed=rss2' },
+  { id: 'my-ballard-burglary', name: 'My Ballard · burglary archive', url: 'https://www.myballard.com/?s=burglar&feed=rss2' },
+  { id: 'my-ballard-vandalism', name: 'My Ballard · vandalism archive', url: 'https://www.myballard.com/?s=vandal&feed=rss2' },
+  { id: 'spd-blotter', name: 'SPD Blotter', url: 'https://spdblotter.seattle.gov/feed/', ballardOnly: true },
+  { id: 'king5', name: 'KING 5', url: 'https://www.king5.com/feeds/syndication/rss/news/local', ballardOnly: true },
+  { id: 'fox13', name: 'FOX 13 Seattle', url: 'https://www.fox13seattle.com/rss/category/news', ballardOnly: true },
+  { id: 'kiro7', name: 'KIRO 7', url: 'https://www.kiro7.com/arc/outboundfeeds/rss/category/news/local/?outputType=xml', ballardOnly: true },
+  { id: 'ballard-alliance', name: 'Ballard Alliance', url: 'https://ballardalliance.com/feed/' }
 ];
 const incidentPattern = /\b(burglar\w*|break[\s\u2010-\u2015-]?ins?|broken\s+into|smash[\s-]?and[\s-]?grabs?|vandal\w*|copper\s+theft)\b/i;
 const businessPattern = /\b(restaurants?|caf[eé]s?|coffee|delicatessen|delis?|baker(?:y|ies)|bistros?|bars?|taverns?|pizzerias?|tacos?|sandwich(?:es)?|biscuits?|donuts?|doughnuts?|eater(?:y|ies)|brewer(?:y|ies)|burgers?|bbq)\b/i;
@@ -30,6 +37,7 @@ export function parseFeed(xml, feed) {
     const title = clean(item.title);
     const context = `${title} ${clean(item.description)} ${clean(item['content:encoded'])}`;
     if (!incidentPattern.test(context) || !businessPattern.test(context)) continue;
+    if (feed.ballardOnly && !/\b(ballard|leary|sunset hill|loyal heights)\b/i.test(context)) continue;
     let url;
     try {
       url = new URL(item.link);
@@ -44,29 +52,13 @@ export function parseFeed(xml, feed) {
   return { leads, warnings };
 }
 
-async function fetchFeed(feed, fetcher, wait) {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    let response;
-    try {
-      response = await fetcher(feed.url, { headers: { 'User-Agent': 'SeattleRestaurantWatch/1.0 (+https://github.com/alexpepperl/seattle-restaurant-watch)', Accept: 'application/rss+xml, application/xml, text/xml' }, signal: AbortSignal.timeout(25000) });
-    } catch (error) {
-      if (attempt === 2) throw error;
-      await wait(1000 * (attempt + 1));
-      continue;
-    }
-    if (response.ok) return { response, attempts: attempt + 1 };
-    if (attempt === 2 || (response.status !== 429 && response.status < 500)) throw new Error(`HTTP ${response.status}`);
-    await wait(1000 * (attempt + 1));
-  }
-}
-
 export async function collectFeeds(previous, { fetcher = fetch, now = new Date(), wait = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
   const timestamp = now.toISOString();
   const leads = new Map((previous.leads || []).map(lead => [lead.url, lead]));
   const feeds = await Promise.all(FEEDS.map(async feed => {
     const old = previous.feeds?.find(item => item.id === feed.id);
     try {
-      const { response, attempts } = await fetchFeed(feed, fetcher, wait);
+      const { response, attempts } = await fetchWithRetry(feed.url, { fetcher, wait, accept: 'application/rss+xml, application/xml, text/xml' });
       const { leads: candidates, warnings } = parseFeed(await response.text(), feed);
       if (attempts > 1) warnings.push(`Source recovered after ${attempts - 1} retries.`);
       for (const lead of candidates) leads.set(lead.url, { ...lead, firstSeenAt: leads.get(lead.url)?.firstSeenAt || timestamp });
@@ -78,6 +70,6 @@ export async function collectFeeds(previous, { fetcher = fetch, now = new Date()
   return {
     lastCheckedAt: timestamp,
     feeds,
-    leads: [...leads.values()].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, 100)
+    leads: [...leads.values()].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, 300)
   };
 }

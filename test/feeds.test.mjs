@@ -58,11 +58,17 @@ test('transient 503 responses retry with bounded backoff and report recovery', a
   });
   assert.ok(result.feeds.every(feed => feed.status === 'ok'));
   assert.ok(result.feeds.every(feed => feed.warnings.includes('Source recovered after 1 retries.')));
-  assert.deepEqual(waits, [1000, 1000, 1000]);
+  assert.deepEqual(waits, FEEDS.map(() => 1000));
 });
 test('non-transient 403 responses fail without retries or source substitution', async () => {
   let requests = 0;
   const result = await collectFeeds({ leads: [], feeds: [] }, { fetcher: async () => { requests++; return { ok: false, status: 403 }; }, wait: async () => assert.fail('Unexpected retry') });
-  assert.equal(requests, 3);
+  assert.equal(requests, FEEDS.length);
   assert.ok(result.feeds.every(feed => feed.status === 'error' && feed.error === 'HTTP 403'));
+});
+test('regional publisher feeds require Ballard context, not merely a Seattle restaurant burglary', () => {
+  const feed = { name: 'Regional', url: 'https://www.myballard.com/feed/', ballardOnly: true };
+  const result = parseFeed(rss(item('Restaurant burglary in Tacoma') + item('Ballard cafe burglary')), feed);
+  assert.equal(result.leads.length, 1);
+  assert.equal(result.leads[0].title, 'Ballard cafe burglary');
 });

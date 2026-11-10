@@ -28,7 +28,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Check public RSS feeds
+      - name: Check public police datasets and RSS feeds
         id: refresh
         continue-on-error: true
         run: npm run refresh
@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/monitor.json
+          git add public/data/monitor.json public/data/police.json
           if ! git diff --cached --quiet; then
             git commit -m "Update public source monitor" -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
             git push
@@ -53,5 +53,5 @@ jobs:
       - name: Flag incomplete source refresh after publishing feed health
         if: steps.refresh.outcome == 'failure'
         run: |
-          echo "::error::One or more RSS feeds failed. Published site includes the failure status; reviewed incidents remain intact."
+          echo "::error::One or more public sources failed. Published site includes the failure status; reviewed incidents remain intact."
           exit 1
