@@ -1,12 +1,12 @@
 {
-  "lastCheckedAt": "2026-11-10T22:06:51.421Z",
+  "lastCheckedAt": "2026-11-10T22:09:35.830Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T22:06:51.421Z",
+      "lastSuccessAt": "2026-11-10T22:09:35.830Z",
       "error": null,
       "warnings": []
     },
@@ -24,7 +24,7 @@
       "name": "Capitol Hill Seattle",
       "url": "https://www.capitolhillseattle.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T22:06:51.421Z",
+      "lastSuccessAt": "2026-11-10T22:09:35.830Z",
       "error": null,
       "warnings": []
     }
