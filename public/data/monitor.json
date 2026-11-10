@@ -1,12 +1,12 @@
 {
-  "lastCheckedAt": "2026-11-10T21:55:16.579Z",
+  "lastCheckedAt": "2026-11-10T22:01:51.355Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
+      "lastSuccessAt": "2026-11-10T22:01:51.355Z",
       "error": null,
       "warnings": []
     },
@@ -14,9 +14,9 @@
       "id": "west-seattle",
       "name": "West Seattle Blog",
       "url": "https://westseattleblog.com/feed/",
-      "status": "ok",
+      "status": "error",
       "lastSuccessAt": "2026-11-10T21:55:16.579Z",
-      "error": null,
+      "error": "HTTP 503",
       "warnings": []
     },
     {
@@ -24,7 +24,7 @@
       "name": "Capitol Hill Seattle",
       "url": "https://www.capitolhillseattle.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-10T21:55:16.579Z",
+      "lastSuccessAt": "2026-11-10T22:01:51.355Z",
       "error": null,
       "warnings": []
     }
