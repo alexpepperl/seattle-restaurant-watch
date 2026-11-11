@@ -4,17 +4,17 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-10T23:15:25.972Z",
+  "lastCheckedAt": "2026-11-11T06:17:48.952Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-10T23:15:25.972Z",
-    "lastSuccessAt": "2026-11-10T23:15:25.972Z",
+    "lastCheckedAt": "2026-11-11T06:17:48.952Z",
+    "lastSuccessAt": "2026-11-11T06:17:48.952Z",
     "sourceUpdatedAt": "2026-11-10T16:27:27.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
-    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-11T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-11T00:00:00'))",
+    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-12T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-12T00:00:00'))",
     "sourceRowCount": 999,
     "records": [
       {
@@ -24854,13 +24854,61 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-10T23:15:25.972Z",
-    "lastSuccessAt": "2026-11-10T23:15:25.972Z",
-    "sourceUpdatedAt": "2026-11-09T22:12:09.000Z",
+    "lastCheckedAt": "2026-11-11T06:17:48.952Z",
+    "lastSuccessAt": "2026-11-11T06:17:48.952Z",
+    "sourceUpdatedAt": "2026-11-11T01:42:46.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
-    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-11T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
-    "sourceRowCount": 708,
+    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-12T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
+    "sourceRowCount": 710,
     "records": [
+      {
+        "id": "2026000331864",
+        "start": "2026-11-07",
+        "end": "2026-11-07",
+        "queuedAt": "2026-11-07T04:58:36.000",
+        "dateBasis": "Call queued date · not a verified offense date",
+        "neighborhoods": [
+          "BALLARD NORTH"
+        ],
+        "beats": [
+          "J2"
+        ],
+        "initialTypes": [
+          "BURG - COMM BURGLARY"
+        ],
+        "finalTypes": [
+          "BURGLARY - NON RESIDENTIAL/COMMERCIAL"
+        ],
+        "clearances": [
+          "REPORT WRITTEN (NO ARREST)"
+        ],
+        "commercial": true,
+        "sourceURL": "https://data.seattle.gov/resource/33kz-ixgy.json?%24where=cad_event_number%3D%272026000331864%27&%24select=cad_event_number%2Ccad_event_original_time_queued%2Cinitial_call_type%2Cfinal_call_type%2Ccad_event_clearance_description%2Cdispatch_neighborhood%2Cdispatch_beat"
+      },
+      {
+        "id": "2026000332095",
+        "start": "2026-11-07",
+        "end": "2026-11-07",
+        "queuedAt": "2026-11-07T10:53:00.000",
+        "dateBasis": "Call queued date · not a verified offense date",
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B2"
+        ],
+        "initialTypes": [
+          "BURG - RESD (INCL UNOCC STRUCTURES ON PROP)"
+        ],
+        "finalTypes": [
+          "BURGLARY - RESIDENTIAL, UNOCCUPIED"
+        ],
+        "clearances": [
+          "REPORT WRITTEN (NO ARREST)"
+        ],
+        "commercial": false,
+        "sourceURL": "https://data.seattle.gov/resource/33kz-ixgy.json?%24where=cad_event_number%3D%272026000332095%27&%24select=cad_event_number%2Ccad_event_original_time_queued%2Cinitial_call_type%2Cfinal_call_type%2Ccad_event_clearance_description%2Cdispatch_neighborhood%2Cdispatch_beat"
+      },
       {
         "id": "2026000330854",
         "start": "2026-11-06",
