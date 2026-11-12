@@ -1,12 +1,12 @@
 {
-  "lastCheckedAt": "2026-11-11T19:35:25.032Z",
+  "lastCheckedAt": "2026-11-12T07:09:13.547Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -15,7 +15,7 @@
       "name": "My Ballard · break-in archive",
       "url": "https://www.myballard.com/?s=break-in&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -24,7 +24,7 @@
       "name": "My Ballard · burglary archive",
       "url": "https://www.myballard.com/?s=burglar&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -33,7 +33,7 @@
       "name": "My Ballard · vandalism archive",
       "url": "https://www.myballard.com/?s=vandal&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -43,7 +43,7 @@
       "url": "https://spdblotter.seattle.gov/feed/",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -53,7 +53,7 @@
       "url": "https://www.king5.com/feeds/syndication/rss/news/local",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -63,7 +63,7 @@
       "url": "https://www.fox13seattle.com/rss/category/news",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -73,7 +73,7 @@
       "url": "https://www.kiro7.com/arc/outboundfeeds/rss/category/news/local/?outputType=xml",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     },
@@ -82,7 +82,7 @@
       "name": "Ballard Alliance",
       "url": "https://ballardalliance.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-11T19:35:25.032Z",
+      "lastSuccessAt": "2026-11-12T07:09:13.547Z",
       "error": null,
       "warnings": []
     }
@@ -105,7 +105,7 @@
     {
       "title": "Sloop Tavern hit by copper theft, faces $5,000 repair bill",
       "url": "https://www.myballard.com/2026/07/31/sloop-tavern-hit-by-copper-theft-faces-5000-repair-bill/",
-      "publisher": "My Ballard · break-in archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2026-07-31T20:05:23.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },
@@ -133,7 +133,7 @@
     {
       "title": "Ballard businesses face ongoing break-ins as city leaders respond",
       "url": "https://www.myballard.com/2026/05/06/ballard-businesses-face-ongoing-break-ins-as-city-leaders-respond/",
-      "publisher": "My Ballard · break-in archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2026-05-06T21:19:13.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },
@@ -147,7 +147,7 @@
     {
       "title": "Ballard restaurants report break-ins, vandalism and frustration over response",
       "url": "https://www.myballard.com/2026/02/20/ballard-restaurants-report-break-ins-vandalism-and-frustration-over-response/",
-      "publisher": "My Ballard · break-in archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2026-02-20T17:39:56.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },

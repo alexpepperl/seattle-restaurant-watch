@@ -4,17 +4,17 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-11T19:35:25.086Z",
+  "lastCheckedAt": "2026-11-12T07:09:13.589Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-11T19:35:25.086Z",
-    "lastSuccessAt": "2026-11-11T19:35:25.086Z",
+    "lastCheckedAt": "2026-11-12T07:09:13.589Z",
+    "lastSuccessAt": "2026-11-12T07:09:13.589Z",
     "sourceUpdatedAt": "2026-11-11T16:58:47.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
-    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-12T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-12T00:00:00'))",
+    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-13T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-13T00:00:00'))",
     "sourceRowCount": 1001,
     "records": [
       {
@@ -24904,11 +24904,11 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-11T19:35:25.086Z",
-    "lastSuccessAt": "2026-11-11T19:35:25.086Z",
+    "lastCheckedAt": "2026-11-12T07:09:13.589Z",
+    "lastSuccessAt": "2026-11-12T07:09:13.589Z",
     "sourceUpdatedAt": "2026-11-11T18:41:03.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
-    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-12T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
+    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-13T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
     "sourceRowCount": 710,
     "records": [
       {
