@@ -1,12 +1,12 @@
 {
-  "lastCheckedAt": "2026-11-13T19:41:25.935Z",
+  "lastCheckedAt": "2026-11-14T06:21:59.839Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -15,7 +15,7 @@
       "name": "My Ballard · break-in archive",
       "url": "https://www.myballard.com/?s=break-in&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -24,7 +24,7 @@
       "name": "My Ballard · burglary archive",
       "url": "https://www.myballard.com/?s=burglar&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -33,7 +33,7 @@
       "name": "My Ballard · vandalism archive",
       "url": "https://www.myballard.com/?s=vandal&feed=rss2",
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -43,7 +43,7 @@
       "url": "https://spdblotter.seattle.gov/feed/",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -53,7 +53,7 @@
       "url": "https://www.king5.com/feeds/syndication/rss/news/local",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -63,7 +63,7 @@
       "url": "https://www.fox13seattle.com/rss/category/news",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -73,7 +73,7 @@
       "url": "https://www.kiro7.com/arc/outboundfeeds/rss/category/news/local/?outputType=xml",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     },
@@ -82,7 +82,7 @@
       "name": "Ballard Alliance",
       "url": "https://ballardalliance.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-13T19:41:25.935Z",
+      "lastSuccessAt": "2026-11-14T06:21:59.839Z",
       "error": null,
       "warnings": []
     }
