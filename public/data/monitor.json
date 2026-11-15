@@ -1,40 +1,40 @@
 {
-  "lastCheckedAt": "2026-11-15T06:30:20.253Z",
+  "lastCheckedAt": "2026-11-15T18:50:41.786Z",
   "feeds": [
     {
       "id": "my-ballard",
       "name": "My Ballard",
       "url": "https://www.myballard.com/feed/",
-      "status": "error",
-      "lastSuccessAt": "2026-11-14T22:23:27.704Z",
-      "error": "HTTP 403",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
+      "error": null,
       "warnings": []
     },
     {
       "id": "my-ballard-breakins",
       "name": "My Ballard · break-in archive",
       "url": "https://www.myballard.com/?s=break-in&feed=rss2",
-      "status": "error",
-      "lastSuccessAt": "2026-11-14T22:23:27.704Z",
-      "error": "HTTP 403",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
+      "error": null,
       "warnings": []
     },
     {
       "id": "my-ballard-burglary",
       "name": "My Ballard · burglary archive",
       "url": "https://www.myballard.com/?s=burglar&feed=rss2",
-      "status": "error",
-      "lastSuccessAt": "2026-11-14T22:23:27.704Z",
-      "error": "HTTP 403",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
+      "error": null,
       "warnings": []
     },
     {
       "id": "my-ballard-vandalism",
       "name": "My Ballard · vandalism archive",
       "url": "https://www.myballard.com/?s=vandal&feed=rss2",
-      "status": "error",
-      "lastSuccessAt": "2026-11-14T22:23:27.704Z",
-      "error": "HTTP 403",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
+      "error": null,
       "warnings": []
     },
     {
@@ -43,7 +43,7 @@
       "url": "https://spdblotter.seattle.gov/feed/",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T06:30:20.253Z",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
       "error": null,
       "warnings": []
     },
@@ -53,7 +53,7 @@
       "url": "https://www.king5.com/feeds/syndication/rss/news/local",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T06:30:20.253Z",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
       "error": null,
       "warnings": []
     },
@@ -63,7 +63,7 @@
       "url": "https://www.fox13seattle.com/rss/category/news",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T06:30:20.253Z",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
       "error": null,
       "warnings": []
     },
@@ -73,7 +73,7 @@
       "url": "https://www.kiro7.com/arc/outboundfeeds/rss/category/news/local/?outputType=xml",
       "ballardOnly": true,
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T06:30:20.253Z",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
       "error": null,
       "warnings": []
     },
@@ -82,7 +82,7 @@
       "name": "Ballard Alliance",
       "url": "https://ballardalliance.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T06:30:20.253Z",
+      "lastSuccessAt": "2026-11-15T18:50:41.786Z",
       "error": null,
       "warnings": []
     }
@@ -105,7 +105,7 @@
     {
       "title": "Sloop Tavern hit by copper theft, faces $5,000 repair bill",
       "url": "https://www.myballard.com/2026/07/31/sloop-tavern-hit-by-copper-theft-faces-5000-repair-bill/",
-      "publisher": "My Ballard · burglary archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2026-07-31T20:05:23.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },
@@ -133,7 +133,7 @@
     {
       "title": "Ballard businesses face ongoing break-ins as city leaders respond",
       "url": "https://www.myballard.com/2026/05/06/ballard-businesses-face-ongoing-break-ins-as-city-leaders-respond/",
-      "publisher": "My Ballard · burglary archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2026-05-06T21:19:13.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },
@@ -217,7 +217,7 @@
     {
       "title": "Several Ballard businesses vandalized over the weekend",
       "url": "https://www.myballard.com/2021/11/08/several-ballard-businesses-vandalized-over-the-weekend/",
-      "publisher": "My Ballard · burglary archive",
+      "publisher": "My Ballard · vandalism archive",
       "publishedAt": "2021-11-08T23:37:47.000Z",
       "firstSeenAt": "2026-11-10T23:02:17.634Z"
     },
