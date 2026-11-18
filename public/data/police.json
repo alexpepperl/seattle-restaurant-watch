@@ -4,18 +4,18 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-18T07:28:18.844Z",
+  "lastCheckedAt": "2026-11-18T20:30:13.822Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-18T07:28:18.844Z",
-    "lastSuccessAt": "2026-11-18T07:28:18.844Z",
-    "sourceUpdatedAt": "2026-11-18T01:54:04.000Z",
+    "lastCheckedAt": "2026-11-18T20:30:13.822Z",
+    "lastSuccessAt": "2026-11-18T20:30:13.822Z",
+    "sourceUpdatedAt": "2026-11-18T16:27:08.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
     "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-19T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-19T00:00:00'))",
-    "sourceRowCount": 1005,
+    "sourceRowCount": 1011,
     "records": [
       {
         "id": "2026-340185",
@@ -41,6 +41,31 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-340185%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-340364",
+        "start": "2026-11-15",
+        "end": "2026-11-15",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-15T09:19:08.000",
+        "offenseIds": [
+          "74968937130"
+        ],
+        "neighborhoods": [
+          "BALLARD NORTH"
+        ],
+        "beats": [
+          "J2"
+        ],
+        "blocks": [
+          "9XX BLOCK OF NW 83RD ST"
+        ],
+        "point": [
+          47.68874881,
+          -122.368835502979
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-340364%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-338283",
@@ -313,6 +338,31 @@
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-326624%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
+        "id": "2026-919982",
+        "start": "2026-11-02",
+        "end": "2026-11-02",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T20:10:50.000",
+        "offenseIds": [
+          "74992223071"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "14XX BLOCK OF NW 64TH ST"
+        ],
+        "point": [
+          47.67527661,
+          -122.374891165611
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919982%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
         "id": "2026-326540",
         "start": "2026-11-01",
         "end": "2026-11-01",
@@ -336,6 +386,56 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-326540%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-919985",
+        "start": "2026-11-01",
+        "end": "2026-11-01",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T20:15:35.000",
+        "offenseIds": [
+          "74992582860"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "14XX BLOCK OF NW 64TH ST"
+        ],
+        "point": [
+          47.67527661,
+          -122.374891165611
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919985%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-920099",
+        "start": "2026-11-01",
+        "end": "2026-11-01",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T22:49:19.000",
+        "offenseIds": [
+          "74995290550"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "24XX BLOCK OF NW MARKET ST"
+        ],
+        "point": [
+          47.66867356,
+          -122.38886071618
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920099%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-329185",
@@ -436,6 +536,56 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919741%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-919853",
+        "start": "2026-10-28",
+        "end": "2026-10-28",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T15:55:18.000",
+        "offenseIds": [
+          "74974430909"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "17XX BLOCK OF NW 56TH ST"
+        ],
+        "point": [
+          47.66944628,
+          -122.380505186204
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919853%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-919958",
+        "start": "2026-10-27",
+        "end": "2026-10-27",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T19:39:07.000",
+        "offenseIds": [
+          "74989851415"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "24XX BLOCK OF NW MARKET ST"
+        ],
+        "point": [
+          47.66867356,
+          -122.388860707331
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919958%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-318663",
@@ -25004,8 +25154,8 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-18T07:28:18.844Z",
-    "lastSuccessAt": "2026-11-18T07:28:18.844Z",
+    "lastCheckedAt": "2026-11-18T20:30:13.822Z",
+    "lastSuccessAt": "2026-11-18T20:30:13.822Z",
     "sourceUpdatedAt": "2026-11-18T06:26:31.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
     "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-19T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
