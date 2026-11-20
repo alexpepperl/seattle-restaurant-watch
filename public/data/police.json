@@ -4,18 +4,18 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-20T07:14:48.691Z",
+  "lastCheckedAt": "2026-11-20T20:18:05.254Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-20T07:14:48.691Z",
-    "lastSuccessAt": "2026-11-20T07:14:48.691Z",
-    "sourceUpdatedAt": "2026-11-19T17:18:56.000Z",
+    "lastCheckedAt": "2026-11-20T20:18:05.254Z",
+    "lastSuccessAt": "2026-11-20T20:18:05.254Z",
+    "sourceUpdatedAt": "2026-11-20T16:51:11.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
     "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-21T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-21T00:00:00'))",
-    "sourceRowCount": 1014,
+    "sourceRowCount": 1017,
     "records": [
       {
         "id": "2026-343255",
@@ -41,6 +41,31 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-343255%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-342240",
+        "start": "2026-11-17",
+        "end": "2026-11-17",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-17T09:35:42.000",
+        "offenseIds": [
+          "75015882412"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "52XX BLOCK OF BALLARD AVE NW"
+        ],
+        "point": [
+          47.665963,
+          -122.38268124577571
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-342240%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-340185",
@@ -116,6 +141,31 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-338283%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-920585",
+        "start": "2026-11-10",
+        "end": "2026-11-10",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-19T15:23:44.000",
+        "offenseIds": [
+          "75086064117"
+        ],
+        "neighborhoods": [
+          "BALLARD NORTH"
+        ],
+        "beats": [
+          "J1"
+        ],
+        "blocks": [
+          "85XX BLOCK OF 15TH AVE NW"
+        ],
+        "point": [
+          47.6915193,
+          -122.376804388994
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920585%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-920468",
@@ -388,31 +438,6 @@
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-326624%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
-        "id": "2026-919982",
-        "start": "2026-11-02",
-        "end": "2026-11-02",
-        "dateBasis": "Offense date",
-        "reportedAt": "2026-11-16T20:10:50.000",
-        "offenseIds": [
-          "74992223071"
-        ],
-        "neighborhoods": [
-          "BALLARD SOUTH"
-        ],
-        "beats": [
-          "B1"
-        ],
-        "blocks": [
-          "14XX BLOCK OF NW 64TH ST"
-        ],
-        "point": [
-          47.67527661,
-          -122.374891165611
-        ],
-        "classification": "Burglary / Breaking & Entering · premises type not supplied",
-        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919982%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
-      },
-      {
         "id": "2026-326540",
         "start": "2026-11-01",
         "end": "2026-11-01",
@@ -436,6 +461,31 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-326540%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-919982",
+        "start": "2026-11-01",
+        "end": "2026-11-01",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-16T20:10:50.000",
+        "offenseIds": [
+          "74992223071"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "14XX BLOCK OF NW 64TH ST"
+        ],
+        "point": [
+          47.67527661,
+          -122.374891165611
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919982%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-919985",
@@ -482,7 +532,7 @@
         ],
         "point": [
           47.66867356,
-          -122.38886071618
+          -122.388860707331
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920099%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
@@ -502,10 +552,40 @@
         "beats": [
           "J2"
         ],
-        "blocks": [],
-        "point": null,
+        "blocks": [
+          "32XX BLOCK OF NW 75TH ST"
+        ],
+        "point": [
+          47.68311915,
+          -122.398845128858
+        ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-919849%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-920244",
+        "start": "2026-10-30",
+        "end": "2026-10-30",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-17T21:01:30.000",
+        "offenseIds": [
+          "75029107524"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "15XX BLOCK OF NW 56TH ST"
+        ],
+        "point": [
+          47.66944418,
+          -122.37754872759
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920244%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-329185",
@@ -25224,13 +25304,37 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-20T07:14:48.691Z",
-    "lastSuccessAt": "2026-11-20T07:14:48.691Z",
-    "sourceUpdatedAt": "2026-11-18T22:31:20.000Z",
+    "lastCheckedAt": "2026-11-20T20:18:05.254Z",
+    "lastSuccessAt": "2026-11-20T20:18:05.254Z",
+    "sourceUpdatedAt": "2026-11-20T11:36:33.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
     "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-21T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
-    "sourceRowCount": 718,
+    "sourceRowCount": 719,
     "records": [
+      {
+        "id": "2026000341691",
+        "start": "2026-11-16",
+        "end": "2026-11-16",
+        "queuedAt": "2026-11-16T15:40:29.000",
+        "dateBasis": "Call queued date · not a verified offense date",
+        "neighborhoods": [
+          "BALLARD NORTH"
+        ],
+        "beats": [
+          "J2"
+        ],
+        "initialTypes": [
+          "TRU - FOLLOW UP"
+        ],
+        "finalTypes": [
+          "BURGLARY - RESIDENTIAL, UNOCCUPIED"
+        ],
+        "clearances": [
+          "FOLLOW-UP REPORT MADE"
+        ],
+        "commercial": false,
+        "sourceURL": "https://data.seattle.gov/resource/33kz-ixgy.json?%24where=cad_event_number%3D%272026000341691%27&%24select=cad_event_number%2Ccad_event_original_time_queued%2Cinitial_call_type%2Cfinal_call_type%2Ccad_event_clearance_description%2Cdispatch_neighborhood%2Cdispatch_beat"
+      },
       {
         "id": "2026000340185",
         "start": "2026-11-15",
