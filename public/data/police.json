@@ -4,19 +4,64 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-24T09:53:28.352Z",
+  "lastCheckedAt": "2026-11-24T22:25:55.474Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-24T09:53:28.352Z",
-    "lastSuccessAt": "2026-11-24T09:53:28.352Z",
-    "sourceUpdatedAt": "2026-11-23T16:57:28.000Z",
+    "lastCheckedAt": "2026-11-24T22:25:55.474Z",
+    "lastSuccessAt": "2026-11-24T22:25:55.474Z",
+    "sourceUpdatedAt": "2026-11-24T16:16:13.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
     "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-25T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-25T00:00:00'))",
-    "sourceRowCount": 1019,
+    "sourceRowCount": 1022,
     "records": [
+      {
+        "id": "2026-348293",
+        "start": "2026-11-23",
+        "end": "2026-11-23",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-23T08:44:06.000",
+        "offenseIds": [
+          "75150108316"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "51XX BLOCK OF BALLARD AVE NW"
+        ],
+        "point": [
+          47.66530518,
+          -122.381897923033
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-348293%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-348297",
+        "start": "2026-11-23",
+        "end": "2026-11-23",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-23T07:31:33.000",
+        "offenseIds": [
+          "75149376586"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [],
+        "point": null,
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-348297%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
       {
         "id": "2026-343255",
         "start": "2026-11-18",
@@ -66,6 +111,31 @@
         ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-342240%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-920994",
+        "start": "2026-11-16",
+        "end": "2026-11-16",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-23T19:14:32.000",
+        "offenseIds": [
+          "75157626342"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "52XX BLOCK OF SHILSHOLE AVE NW"
+        ],
+        "point": [
+          47.66508479,
+          -122.383106149574
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920994%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
       {
         "id": "2026-340185",
@@ -25354,8 +25424,8 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-24T09:53:28.352Z",
-    "lastSuccessAt": "2026-11-24T09:53:28.352Z",
+    "lastCheckedAt": "2026-11-24T22:25:55.474Z",
+    "lastSuccessAt": "2026-11-24T22:25:55.474Z",
     "sourceUpdatedAt": "2026-11-23T22:30:45.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
     "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-25T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
