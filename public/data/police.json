@@ -4,17 +4,17 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-25T21:40:49.574Z",
+  "lastCheckedAt": "2026-11-26T08:16:24.749Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-25T21:40:49.574Z",
-    "lastSuccessAt": "2026-11-25T21:40:49.574Z",
+    "lastCheckedAt": "2026-11-26T08:16:24.749Z",
+    "lastSuccessAt": "2026-11-26T08:16:24.749Z",
     "sourceUpdatedAt": "2026-11-25T16:08:46.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
-    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-26T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-26T00:00:00'))",
+    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-27T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-27T00:00:00'))",
     "sourceRowCount": 1022,
     "records": [
       {
@@ -25424,13 +25424,37 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-25T21:40:49.574Z",
-    "lastSuccessAt": "2026-11-25T21:40:49.574Z",
-    "sourceUpdatedAt": "2026-11-25T02:26:31.000Z",
+    "lastCheckedAt": "2026-11-26T08:16:24.749Z",
+    "lastSuccessAt": "2026-11-26T08:16:24.749Z",
+    "sourceUpdatedAt": "2026-11-25T21:44:09.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
-    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-26T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
-    "sourceRowCount": 721,
+    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-27T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
+    "sourceRowCount": 722,
     "records": [
+      {
+        "id": "2026000347450",
+        "start": "2026-11-22",
+        "end": "2026-11-22",
+        "queuedAt": "2026-11-22T04:43:52.000",
+        "dateBasis": "Call queued date · not a verified offense date",
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B2"
+        ],
+        "initialTypes": [
+          "BURG - COMM BURGLARY"
+        ],
+        "finalTypes": [
+          "BURGLARY - NON RESIDENTIAL/COMMERCIAL"
+        ],
+        "clearances": [
+          "REPORT WRITTEN (NO ARREST)"
+        ],
+        "commercial": true,
+        "sourceURL": "https://data.seattle.gov/resource/33kz-ixgy.json?%24where=cad_event_number%3D%272026000347450%27&%24select=cad_event_number%2Ccad_event_original_time_queued%2Cinitial_call_type%2Cfinal_call_type%2Ccad_event_clearance_description%2Cdispatch_neighborhood%2Cdispatch_beat"
+      },
       {
         "id": "2026000343255",
         "start": "2026-11-18",
