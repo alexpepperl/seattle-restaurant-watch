@@ -4,19 +4,69 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-27T08:30:48.763Z",
+  "lastCheckedAt": "2026-11-27T21:16:19.492Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-27T08:30:48.763Z",
-    "lastSuccessAt": "2026-11-27T08:30:48.763Z",
-    "sourceUpdatedAt": "2026-11-26T16:31:26.000Z",
+    "lastCheckedAt": "2026-11-27T21:16:19.492Z",
+    "lastSuccessAt": "2026-11-27T21:16:19.492Z",
+    "sourceUpdatedAt": "2026-11-27T16:11:00.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
     "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-28T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-28T00:00:00'))",
-    "sourceRowCount": 1023,
+    "sourceRowCount": 1025,
     "records": [
+      {
+        "id": "2026-351284",
+        "start": "2026-11-26",
+        "end": "2026-11-26",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-26T05:45:35.000",
+        "offenseIds": [
+          "75254111517"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B2"
+        ],
+        "blocks": [
+          "8XX BLOCK OF NW 49TH ST"
+        ],
+        "point": [
+          47.6643824,
+          -122.367399778575
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-351284%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
+      {
+        "id": "2026-351296",
+        "start": "2026-11-26",
+        "end": "2026-11-26",
+        "dateBasis": "Offense date",
+        "reportedAt": "2026-11-26T05:39:11.000",
+        "offenseIds": [
+          "75254077758"
+        ],
+        "neighborhoods": [
+          "BALLARD SOUTH"
+        ],
+        "beats": [
+          "B1"
+        ],
+        "blocks": [
+          "64XX BLOCK OF 32ND AVE NW"
+        ],
+        "point": [
+          47.67548872,
+          -122.3983736
+        ],
+        "classification": "Burglary / Breaking & Entering · premises type not supplied",
+        "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-351296%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
+      },
       {
         "id": "2026-348293",
         "start": "2026-11-23",
@@ -297,8 +347,13 @@
         "beats": [
           "B2"
         ],
-        "blocks": [],
-        "point": null,
+        "blocks": [
+          "9XX BLOCK OF NW 56TH ST"
+        ],
+        "point": [
+          47.6694363,
+          -122.369679883305
+        ],
         "classification": "Burglary / Breaking & Entering · premises type not supplied",
         "sourceURL": "https://data.seattle.gov/resource/tazs-3rd5.json?%24where=report_number%3D%272026-920689%27&%24select=report_number%2Coffense_id%2Coffense_date%2Creport_date_time%2Cblock_address%2Clatitude%2Clongitude%2Cneighborhood%2Cbeat%2Cnibrs_offense_code"
       },
@@ -25444,8 +25499,8 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-27T08:30:48.763Z",
-    "lastSuccessAt": "2026-11-27T08:30:48.763Z",
+    "lastCheckedAt": "2026-11-27T21:16:19.492Z",
+    "lastSuccessAt": "2026-11-27T21:16:19.492Z",
     "sourceUpdatedAt": "2026-11-26T22:16:57.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
     "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-28T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
