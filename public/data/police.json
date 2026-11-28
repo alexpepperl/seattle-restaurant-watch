@@ -4,17 +4,17 @@
     "BALLARD NORTH",
     "BALLARD SOUTH"
   ],
-  "lastCheckedAt": "2026-11-27T21:16:19.492Z",
+  "lastCheckedAt": "2026-11-28T07:46:58.580Z",
   "crime": {
     "name": "SPD approved burglary reports",
     "dataset": "tazs-3rd5",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-27T21:16:19.492Z",
-    "lastSuccessAt": "2026-11-27T21:16:19.492Z",
+    "lastCheckedAt": "2026-11-28T07:46:58.580Z",
+    "lastSuccessAt": "2026-11-28T07:46:58.580Z",
     "sourceUpdatedAt": "2026-11-27T16:11:00.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/tazs-3rd5.json",
-    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-28T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-28T00:00:00'))",
+    "query": "neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND nibrs_offense_code='220' AND ((offense_date >= '2025-01-01T00:00:00' AND offense_date < '2026-11-29T00:00:00') OR (offense_date is null AND report_date_time >= '2025-01-01T00:00:00' AND report_date_time < '2026-11-29T00:00:00'))",
     "sourceRowCount": 1025,
     "records": [
       {
@@ -25499,11 +25499,11 @@
     "dataset": "33kz-ixgy",
     "status": "ok",
     "error": null,
-    "lastCheckedAt": "2026-11-27T21:16:19.492Z",
-    "lastSuccessAt": "2026-11-27T21:16:19.492Z",
-    "sourceUpdatedAt": "2026-11-26T22:16:57.000Z",
+    "lastCheckedAt": "2026-11-28T07:46:58.580Z",
+    "lastSuccessAt": "2026-11-28T07:46:58.580Z",
+    "sourceUpdatedAt": "2026-11-28T00:00:30.000Z",
     "metadataURL": "https://data.seattle.gov/api/views/33kz-ixgy.json",
-    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-28T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
+    "query": "dispatch_neighborhood in ('BALLARD NORTH','BALLARD SOUTH') AND cad_event_original_time_queued >= '2025-01-01T00:00:00' AND cad_event_original_time_queued < '2026-11-29T00:00:00' AND (upper(initial_call_type) like '%BURGL%' OR upper(final_call_type) like '%BURGL%')",
     "sourceRowCount": 725,
     "records": [
       {
